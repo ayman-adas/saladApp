@@ -1,183 +1,87 @@
-// ignore_for_file: must_be_immutable
+part of '../import/import.dart';
 
-import 'package:flutter/material.dart';
-
-int counter = 0;
-
-class WPacketElement extends StatelessWidget {
-  const WPacketElement(
+// ignore: must_be_immutable
+class WPacketSalad extends StatefulWidget {
+  WPacketSalad(
       {super.key,
       required this.url,
       required this.data,
-      required this.sailAll,
-      required this.counter});
+      required this.sail,
+      required this.counter,
+      required this.index});
 
   final String url;
   final String data;
-  final int sailAll;
-  final int counter;
+  int sail;
+  int counter;
+  final int index;
+
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(children: [
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(3),
-                border: Border.all(color: Colors.transparent)),
-            child: Image(
-              fit: BoxFit.cover,
-              image: NetworkImage(
-                url,
-              ),
-              width: 100,
-              height: 100,
-            ),
-          ),
-          Center(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 18.0),
-                child: Text(
-                  data,
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.w600),
-                ),
-              ),
-              Row(
-                children: [
-                  const Icon(Icons.money_outlined),
-                  Text("${sailAll}JD"),
-                ],
-              ),
-              Text(" count:$counter")
-            ]),
-          ),
-        ]),
-        Container(
-          height: 20,
-        ),
-      ],
-    );
-  }
+  State<WPacketSalad> createState() => _WPacketSaladState();
 }
 
-// import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
-
-// int counter = 0;
-
-// class WPacketElement extends StatelessWidget {
-//   const WPacketElement(
-//       {super.key,
-//       required this.url,
-//       required this.data,
-//       required this.sailAll,
-//       required this.count});
-
-//   final String url;
-//   final String data;
-//   final int sailAll;
-//   final int count;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//         height: 130,
-//         color: Colors.transparent,
-//         margin: const EdgeInsets.all(5),
-//         child: Row(children: [
-//           Container(
-//               decoration: BoxDecoration(
-//                   borderRadius: BorderRadius.circular(5),
-//                   border: Border.all(color: Colors.black)),
-//               child: Expanded(child: Image.network(url))),
-//           const SizedBox(width: 5),
-//           Expanded(
-//               flex: 2,
-//               child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-//                 children: [
-//                   Text(
-//                     data,
-//                     style: GoogleFonts.abel(color: Colors.grey, fontSize: 16),
-//                   ),
-//                   const Row(
-//                     children: [
-//                       Icon(Icons.money_outlined, color: Colors.grey),
-//                       SizedBox(width: 4),
-//                     ],
-//                   ),
-//                   Text(
-//                     sailAll.toString(),
-//                     style: GoogleFonts.aBeeZee(fontWeight: FontWeight.bold),
-//                     maxLines: 2,
-//                     overflow: TextOverflow.ellipsis,
-//                   ),
-//                   Text(count.toString()),
-//                 ],
-//               )),
-//         ]));
-//   }
-// // }
-// import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
-
-// class WPacketElement extends StatelessWidget {
-//   const WPacketElement(
-//       {super.key,
-//       required this.url,
-//       required this.data,
-//       required this.sailAll,
-//       required this.count});
-
-//   final String url;
-//   final String data;
-//   final int sailAll;
-//   final int count;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//         color: Colors.transparent,
-//         margin: const EdgeInsets.all(5),
-//         child: Row(
-//           children: [
-//             Container(
-//               width: double.infinity,
-//               decoration: BoxDecoration(
-//                 borderRadius: BorderRadius.circular(5),
-//                 border: Border.all(color: Colors.black),
-//               ),
-//               child: Image.network(url),
-//             ),
-//             const SizedBox(width: 5),
-//             Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               mainAxisAlignment: MainAxisAlignment.spaceAround,
-//               children: [
-//                 Text(
-//                   data,
-//                   style: GoogleFonts.abel(color: Colors.grey, fontSize: 16),
-//                 ),
-//                 const Row(
-//                   children: [
-//                     Icon(Icons.money_outlined, color: Colors.grey),
-//                     SizedBox(width: 4),
-//                     // Add your child widgets here if needed
-//                   ],
-//                 ),
-//                 Text(
-//                   sailAll.toString(),
-//                   style: GoogleFonts.aBeeZee(fontWeight: FontWeight.bold),
-//                   maxLines: 2,
-//                   overflow: TextOverflow.ellipsis,
-//                 ),
-//                 Text(count.toString()),
-//               ],
-//             ),
-//           ],
-//         ));
-//   }
-// }
+class _WPacketSaladState extends State<WPacketSalad> {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        child: Container(
+            height: 130,
+            color: Colors.transparent,
+            margin: const EdgeInsets.all(5),
+            child: Expanded(
+              child: Row(children: [
+                Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Expanded(
+                      flex: 2,
+                      child: Image(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                          widget.url,
+                        ),
+                        width: 100,
+                        height: 100,
+                      ),
+                    )),
+                const SizedBox(width: 5),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30),
+                      child: Text(
+                        widget.data,
+                        style: GoogleFonts.abel(fontSize: 16),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 2.0),
+                      child: Row(children: [
+                        const Icon(Icons.money_outlined, color: Colors.grey),
+                        const SizedBox(width: 4),
+                        Text(
+                          "${widget.sail}JD",
+                          style: GoogleFonts.abel(fontSize: 16),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        "counter:${widget.counter}",
+                        style: GoogleFonts.abel(fontSize: 16),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    )
+                  ],
+                )
+              ]),
+            )));
+  }
+}

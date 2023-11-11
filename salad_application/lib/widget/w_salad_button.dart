@@ -1,21 +1,25 @@
-import 'package:flutter/material.dart';
-import 'package:fruit_salad/view/v_quantity.dart';
-import 'package:google_fonts/google_fonts.dart';
+part of '../import/import.dart';
 
-int counter = 0;
-
+// ignore: must_be_immutable
 class WSaladButton extends StatelessWidget {
-  const WSaladButton(
-      {super.key, required this.url, required this.data, required this.sail});
+  WSaladButton(
+      {super.key,
+      required this.url,
+      required this.data,
+      required this.sail,
+      required this.counter,
+      required this.index});
 
   final String url;
   final String data;
-  final int sail;
+  int sail;
+  int counter;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-          height: 130,
+          height: 136,
           color: Colors.transparent,
           margin: const EdgeInsets.all(5),
           child: InkWell(
@@ -23,9 +27,12 @@ class WSaladButton extends StatelessWidget {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (BuildContext context) {
                   return VQuantity(
+                    index: index,
                     data: data,
                     url: url,
                     sail: sail,
+                    counter: counter,
+                    counter2: counter,
                   );
                 }));
               },
@@ -33,8 +40,8 @@ class WSaladButton extends StatelessWidget {
                 child: Row(children: [
                   Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: Colors.black)),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
                       child: Expanded(
                         flex: 2,
                         child: Image(
@@ -70,7 +77,7 @@ class WSaladButton extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                         ]),
-                      )
+                      ),
                     ],
                   )
                 ]),

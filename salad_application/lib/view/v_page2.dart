@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:fruit_salad/controller/c_slide_translation.dart';
-import 'package:fruit_salad/model/m_page2.dart';
-import 'package:fruit_salad/view/v_page3.dart';
-import 'package:fruit_salad/controller/c_error_massage.dart';
-import 'package:regexpattern/regexpattern.dart';
+part of '../import/import.dart';
 
 class VPage2 extends StatefulWidget {
   const VPage2({super.key});
@@ -66,8 +61,9 @@ class _VPage2State extends State<VPage2> {
                       if (!textController.value.text.isUsername()) {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (BuildContext context) {
-                          return const CErrorMassage(
+                          return CErrorMassage(
                             massage: MPage2.error,
+                            callback: () => Navigator.pop(context),
                           );
                         }));
                       } else {
@@ -77,7 +73,7 @@ class _VPage2State extends State<VPage2> {
                               name: textController.value.text,
                             )));
                       }
-                    })),
+                    }))
           ],
         ),
       ),

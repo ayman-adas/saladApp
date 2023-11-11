@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:fruit_salad/controller/c_slide_translation.dart';
-import 'package:fruit_salad/model/m_page1.dart';
-import 'package:fruit_salad/view/v_page2.dart';
+part of '../import/import.dart';
 
 class VPage1 extends StatelessWidget {
   const VPage1({super.key});

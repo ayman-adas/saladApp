@@ -1,13 +1,4 @@
-import 'dart:async';
-
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
-
-import 'package:flutter/services.dart';
-import 'package:fruit_salad/controller/c_error_massage.dart';
-import 'package:fruit_salad/model/m_page1.dart';
-import 'package:fruit_salad/view/v_page1.dart';
+part of '../import/import.dart';
 
 class VHome extends StatefulWidget {
   const VHome({super.key});
@@ -64,7 +55,12 @@ class _VHomeState extends State<VHome> {
 
   Widget view() {
     if (_connectionStatus == ConnectivityResult.none) {
-      return const CErrorMassage(massage: MPage1.errorMassage);
+      return CErrorMassage(
+        massage: MPage1.errorMassage,
+        callback: () {
+          setState(() {});
+        },
+      );
     }
     return const VPage1();
   }

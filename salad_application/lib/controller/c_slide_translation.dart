@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of '../import/import.dart';
 
 class CSlideTranstion extends PageRouteBuilder {
   final Widget page;
@@ -6,7 +6,7 @@ class CSlideTranstion extends PageRouteBuilder {
   CSlideTranstion(this.page)
       : super(
             pageBuilder: (context, animation, anotherAnimation) => page,
-            transitionDuration: const Duration(milliseconds: 2000),
+            transitionDuration: const Duration(milliseconds: 4000),
             reverseTransitionDuration: const Duration(milliseconds: 4000),
             transitionsBuilder: (context, animation, anotherAnimation, child) {
               animation = CurvedAnimation(

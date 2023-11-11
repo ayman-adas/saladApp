@@ -42,7 +42,23 @@ dependencies:
   search_page: ^2.3.0
   connectivity_plus: ^5.0.1
   flutter_staggered_animations: ^1.1.1
+  flutter_native_splash: ^2.3.5
+flutter_native_splash:
+ 
+  web: false
+  ios: true
+  android: true
 
+  color: "#FFC800"
+  image: assets/splachpng.png
+  color_dark: "#FFC800"
+  image_dark: assets/splachpng.png
+
+  android_12:
+    image: assets/splachpng.png
+    icon_background_color: "#FFC800"
+    image_dark: assets/splachpng.png
+    icon_background_color_dark: "#FFC800"
 
 dev_dependencies:
   flutter_test:

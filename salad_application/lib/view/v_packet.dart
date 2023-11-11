@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:fruit_salad/controller/c_packet_list.dart';
-import 'package:fruit_salad/view/v_quantity.dart';
+part of '../import/import.dart';
 
 class VPacket extends StatefulWidget {
   const VPacket({super.key});
@@ -11,19 +8,31 @@ class VPacket extends StatefulWidget {
 }
 
 Text show() {
-  if (VQuantity.sailAll == 0) {
+  if (sailAll == 0) {
     return const Text("");
   }
-  return Text("Total sails ${VQuantity.sailAll}JD",
+  return Text("Total sails ${sailAll}JD",
       style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w400));
+}
+
+List list() {
+  List temp = [];
+  int index = 0;
+  for (int i = 0; i < CPacketList.list.length; i++) {
+    if (CPacketList.list[i].counter > 0) {
+      temp.insert(index, CPacketList.list[i]);
+      index++;
+    }
+  }
+  return temp;
 }
 
 class _VPacketState extends State<VPacket> {
   @override
   Widget build(BuildContext context) {
+    List listview = list();
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xFFFFC800),
           leading: IconButton(
             onPressed: () => Navigator.pop(context),
             icon: const Icon(Icons.arrow_back_outlined),
@@ -39,9 +48,9 @@ class _VPacketState extends State<VPacket> {
                       padding: const EdgeInsets.all(8),
                       physics: const BouncingScrollPhysics(
                           parent: AlwaysScrollableScrollPhysics()),
-                      itemCount: CPacketList.list.length,
+                      itemCount: listview.length,
                       itemBuilder: (BuildContext context, int index) {
-                        if (index < 0 || index >= CPacketList.list.length) {
+                        if (index < 0 || index >= listview.length) {
                           return null;
                         }
                         return AnimationConfiguration.staggeredList(
@@ -54,94 +63,73 @@ class _VPacketState extends State<VPacket> {
                                     curve: Curves.fastLinearToSlowEaseIn,
                                     duration:
                                         const Duration(milliseconds: 2500),
-                                    child: Expanded(
-                                      child: Row(
-                                        children: [
-                                          CPacketList.list[index],
-                                          Flexible(
-                                            child: Align(
-                                              alignment: Alignment.centerRight,
-                                              child: ElevatedButton(
-                                                onPressed: () {
-                                                  VQuantity.sailAll -=
-                                                      CPacketList
-                                                          .list[index].sailAll;
-                                                  CPacketList.list
-                                                      .removeAt(index);
-                                                  setState(() {});
-                                                },
-                                                style: ButtonStyle(
-                                                  shape:
-                                                      MaterialStateProperty.all(
-                                                          const CircleBorder()),
-                                                  backgroundColor:
-                                                      MaterialStateProperty.all(
-                                                          Colors.red),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(context,
+                                            MaterialPageRoute(builder:
+                                                (BuildContext context) {
+                                          return VQuantity(
+                                            index: listview[index].index,
+                                            data: listview[index].data,
+                                            url: listview[index].url,
+                                            sail: (listview[index].sail /
+                                                    listview[index].counter)
+                                                .round(),
+                                            counter: listview[index].counter,
+                                            counter2: listview[index].counter,
+                                          );
+                                        }));
+                                        setState(() {});
+                                      },
+                                      child: Expanded(
+                                        child: Row(
+                                          children: [
+                                            listview[index],
+                                            Flexible(
+                                              child: Align(
+                                                alignment:
+                                                    Alignment.centerRight,
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    sailAll -=
+                                                        listview[index].sail;
+                                                    listview[index].counter = 0;
+                                                    setState(() {});
+                                                  },
+                                                  style: ButtonStyle(
+                                                      fixedSize:
+                                                          const MaterialStatePropertyAll(
+                                                              Size(60, 60)),
+                                                      shape: MaterialStateProperty
+                                                          .all(
+                                                              const CircleBorder()),
+                                                      backgroundColor:
+                                                          MaterialStateProperty
+                                                              .all(Colors.red),
+                                                      padding:
+                                                          const MaterialStatePropertyAll(
+                                                              EdgeInsets
+                                                                  .symmetric(
+                                                                      vertical:
+                                                                          22,
+                                                                      horizontal:
+                                                                          10))),
+                                                  child: const Text(
+                                                    "X",
+                                                    style: TextStyle(
+                                                      fontSize: 15,
+                                                    ),
+                                                  ),
                                                 ),
-                                                child: const Text("X"),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ))));
-                      })))
-
-          // child: ListView.builder(
-          //   itemCount: CPacketList.list.length,
-          //   itemBuilder: (BuildContext context, int index) {
-          // if (index < 0 || index >= CPacketList.list.length) {
-          //   return null;
-          // }
-
-          //     return Column(
-          //       children: [
-          //         Card(
-          //           child: Container(
-          //             constraints: const BoxConstraints(
-          //                 maxHeight:
-          //                     double.infinity), // Set a maximum height
-
-          // child: Expanded(
-          //   child: Row(
-          //     children: [
-          //       CPacketList.list[index],
-          //       Flexible(
-          //         child: Align(
-          //           alignment: Alignment.centerRight,
-          //           child: ElevatedButton(
-          //             onPressed: () {
-          //               VQuantity.sailAll -=
-          //                   CPacketList.list[index].sailAll;
-          //               CPacketList.list.removeAt(index);
-          //               setState(() {});
-          //             },
-          //             style: ButtonStyle(
-          //               shape: MaterialStateProperty.all(
-          //                   const CircleBorder()),
-          //               backgroundColor:
-          //                   MaterialStateProperty.all(
-          //                       Colors.red),
-          //             ),
-          //             child: const Text("X"),
-          //           ),
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          //             ),
-          //           ),
-          //         ),
-          //         Container(
-          //           height: 20,
-          //         ),
-          //       ],
-          //     );
-          //   },
-          // ),
-          ,
+                      }))),
           Container(
-              color: const Color(0xFFFFC800),
+              color: const Color.fromARGB(174, 255, 200, 0),
               height: 100,
               width: double.infinity,
               child: Center(child: show()))
