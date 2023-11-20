@@ -43,6 +43,8 @@ dependencies:
   connectivity_plus: ^5.0.1
   flutter_staggered_animations: ^1.1.1
   flutter_native_splash: ^2.3.5
+  flutter_onboarding_slider: ^1.0.11
+  easy_localization: ^3.0.3
 flutter_native_splash:
  
   web: false
@@ -94,6 +96,7 @@ flutter:
     - assets/page1.png
     - assets/page2.jpeg
     - assets/page3.png
+    - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

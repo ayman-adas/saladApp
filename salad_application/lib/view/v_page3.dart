@@ -22,12 +22,12 @@ class VPage3 extends StatelessWidget {
                   delegate: SearchPage<WSaladButton>(
                       searchStyle: const TextStyle(),
                       items: MPage3.list,
-                      searchLabel: 'Search Fruit salad',
-                      suggestion: const Center(
-                        child: Text('Filter Fruit salad by name.'),
+                      searchLabel: MLanguages.searchLabel.tr(),
+                      suggestion: Center(
+                        child: const Text(MLanguages.suggestion).tr(),
                       ),
-                      failure: const Center(
-                        child: Text('No Fruit Salad found :('),
+                      failure: Center(
+                        child: const Text(MLanguages.failure).tr(),
                       ),
                       filter: (WSaladButton salad) => [
                             salad.data,
@@ -60,20 +60,19 @@ class VPage3 extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: Column(children: [
                   Text(
-                    "Hello $name${MPage3.title}",
+                    "${MLanguages.hello.tr()} $name ${MLanguages.page3title.tr()}",
                     style: const TextStyle(
                         fontWeight: FontWeight.w400, fontSize: 15),
                   ),
                   const Divider(
                     color: Colors.black,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 8.0),
-                    child: Text(
-                      "Fruit Salad Combo",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: const Text(MLanguages.saladcombo,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 30))
+                        .tr(),
                   ),
                 ]))),
         Expanded(

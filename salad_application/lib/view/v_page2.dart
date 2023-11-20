@@ -8,8 +8,6 @@ class VPage2 extends StatefulWidget {
 }
 
 class _VPage2State extends State<VPage2> {
-  final TextEditingController textController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,17 +24,17 @@ class _VPage2State extends State<VPage2> {
             ),
             Container(
                 padding: const EdgeInsets.fromLTRB(5, 50, 0, 0),
-                child: const Text(
-                  MPage2.title,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
-                )),
+                child: Text(
+                  MLanguages.page2title,
+                  style: UtilsTheme.tLarge(context),
+                ).tr()),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 controller: textController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'ayman',
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  hintText: MLanguages.page2hint.tr(),
                 ),
                 textAlign: TextAlign.left,
               ),
@@ -50,28 +48,25 @@ class _VPage2State extends State<VPage2> {
                         backgroundColor: MaterialStatePropertyAll(
                           Color.fromARGB(255, 255, 200, 0),
                         )),
-                    child: const Text(
-                      MPage2.button,
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: const Text(MLanguages.page2button,
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        )).tr(),
                     onPressed: () {
                       if (!textController.value.text.isUsername()) {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (BuildContext context) {
                           return CErrorMassage(
-                            massage: MPage2.error,
+                            massage: MLanguages.page2errorMassage.tr(),
                             callback: () => Navigator.pop(context),
                           );
                         }));
                       } else {
-                        Navigator.push(
-                            context,
-                            CSlideTranstion(VPage3(
-                              name: textController.value.text,
-                            )));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (BuildContext context) {
+                          return const VTestNetwok();
+                        }));
                       }
                     }))
           ],

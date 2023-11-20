@@ -1,7 +1,7 @@
 part of '../import/import.dart';
 
 // ignore: must_be_immutable
-class WPacketSalad extends StatefulWidget {
+class WPacketSalad extends StatelessWidget {
   WPacketSalad(
       {super.key,
       required this.url,
@@ -16,11 +16,6 @@ class WPacketSalad extends StatefulWidget {
   int counter;
   final int index;
 
-  @override
-  State<WPacketSalad> createState() => _WPacketSaladState();
-}
-
-class _WPacketSaladState extends State<WPacketSalad> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -39,7 +34,7 @@ class _WPacketSaladState extends State<WPacketSalad> {
                       child: Image(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                          widget.url,
+                          url,
                         ),
                         width: 100,
                         height: 100,
@@ -53,7 +48,7 @@ class _WPacketSaladState extends State<WPacketSalad> {
                     Padding(
                       padding: const EdgeInsets.only(top: 30),
                       child: Text(
-                        widget.data,
+                        data,
                         style: GoogleFonts.abel(fontSize: 16),
                       ),
                     ),
@@ -63,7 +58,7 @@ class _WPacketSaladState extends State<WPacketSalad> {
                         const Icon(Icons.money_outlined, color: Colors.grey),
                         const SizedBox(width: 4),
                         Text(
-                          "${widget.sail}JD",
+                          "$sail JD",
                           style: GoogleFonts.abel(fontSize: 16),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
@@ -73,7 +68,7 @@ class _WPacketSaladState extends State<WPacketSalad> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: Text(
-                        "counter:${widget.counter}",
+                        " ${MLanguages.counter.tr()}:$counter",
                         style: GoogleFonts.abel(fontSize: 16),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,

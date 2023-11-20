@@ -11,7 +11,7 @@ Text show() {
   if (sailAll == 0) {
     return const Text("");
   }
-  return Text("Total sails ${sailAll}JD",
+  return Text("${MLanguages.totalSails.tr()} ${sailAll}JD",
       style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w400));
 }
 

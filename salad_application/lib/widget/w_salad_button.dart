@@ -26,12 +26,16 @@ class WSaladButton extends StatelessWidget {
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (BuildContext context) {
+                  int counter2 = counter;
+                  if (counter == 0) {
+                    counter2 = 1;
+                  }
                   return VQuantity(
                     index: index,
                     data: data,
                     url: url,
                     sail: sail,
-                    counter: counter,
+                    counter: counter2,
                     counter2: counter,
                   );
                 }));
