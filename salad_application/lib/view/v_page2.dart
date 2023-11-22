@@ -15,58 +15,80 @@ class _VPage2State extends State<VPage2> {
         child: Column(
           children: [
             Container(
-              height: 450,
+              height: (MDime.half * 690).h,
               color: const Color.fromARGB(255, 255, 200, 0),
               child: Image.asset(
                 "assets/page2.jpeg",
-                height: 400,
+                height: (MDime.half * 690 - 100).h,
               ),
             ),
             Container(
                 padding: const EdgeInsets.fromLTRB(5, 50, 0, 0),
                 child: Text(
                   MLanguages.page2title,
-                  style: UtilsTheme.tLarge(context),
+                  style: ThemeTextStyle.hSmall(context),
                 ).tr()),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                maxLength: 10,
+                cursorColor: ThemeColor.green,
                 controller: textController,
                 decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  hintText: MLanguages.page2hint.tr(),
-                ),
+                    filled: true,
+                    contentPadding: const EdgeInsets.only(
+                        left: 14.0, bottom: 8.0, top: 8.0),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: ThemeColor.green),
+                      borderRadius: BorderRadius.circular(25.7),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: ThemeColor.green),
+                      borderRadius: BorderRadius.circular(25.7),
+                    ),
+                    border: const OutlineInputBorder(),
+                    hintText: MLanguages.page2hint.tr(),
+                    hintStyle: ThemeTextStyle.lMedium(context)),
                 textAlign: TextAlign.left,
               ),
             ),
             Padding(
                 padding: const EdgeInsets.fromLTRB(10, 45, 10, 00),
                 child: ElevatedButton(
-                    style: const ButtonStyle(
-                        minimumSize:
-                            MaterialStatePropertyAll(Size(double.infinity, 60)),
-                        backgroundColor: MaterialStatePropertyAll(
-                          Color.fromARGB(255, 255, 200, 0),
-                        )),
-                    child: const Text(MLanguages.page2button,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        )).tr(),
+                    style: ButtonStyle(
+                      minimumSize: MaterialStatePropertyAll(Size(
+                          (MDime.fullScreen * 630).w,
+                          MDime.quarter * 360 - 30.h)),
+                      backgroundColor:
+                          MaterialStatePropertyAll(ThemeColor.gold),
+                      foregroundColor:
+                          MaterialStatePropertyAll(ThemeColor.green),
+                    ),
+                    child: Text(MLanguages.page2button,
+                            style: ThemeTextStyle.tLarge(context))
+                        .tr(),
                     onPressed: () {
                       if (!textController.value.text.isUsername()) {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (BuildContext context) {
-                          return CErrorMassage(
-                            massage: MLanguages.page2errorMassage.tr(),
-                            callback: () => Navigator.pop(context),
-                          );
-                        }));
+                        Dialogs.materialDialog(
+                          title: MLanguages.page2errorMassage.tr(),
+                          context: context,
+                          color: Colors.white,
+                          onClose: (value) {},
+                          titleStyle:
+                              TextStyle(fontSize: 20.sp, color: Colors.black),
+                          actions: [
+                            IconsButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(['Test', 'List']);
+                              },
+                              text: MLanguages.ok.tr(),
+                              textStyle: ThemeTextStyle.tLarge(context),
+                              color: ThemeColor.gold,
+                            ),
+                          ],
+                        );
                       } else {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (BuildContext context) {
-                          return const VTestNetwok();
-                        }));
+                        Navigator.pushNamed(context, MRouteName.networkTest);
                       }
                     }))
           ],

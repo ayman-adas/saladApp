@@ -56,7 +56,7 @@ class _VTestNetwokState extends State<VTestNetwok> {
   Widget view() {
     if (_connectionStatus == ConnectivityResult.none) {
       return CErrorMassage(
-        massage: MPage1.errorMassage.tr(),
+        massage: MLanguages.page1errorMassage.tr(),
         callback: () {
           setState(() {});
         },

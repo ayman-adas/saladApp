@@ -19,7 +19,7 @@ class WSaladButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-          height: 136,
+          height: MDime.d3 * 690 - 600.h,
           color: Colors.transparent,
           margin: const EdgeInsets.all(5),
           child: InkWell(
@@ -53,21 +53,19 @@ class WSaladButton extends StatelessWidget {
                           image: NetworkImage(
                             url,
                           ),
-                          width: 100,
-                          height: 100,
+                          width: MDime.d1 * 360 - 250.w,
+                          height: MDime.d1 * 690 - 450.h,
                         ),
                       )),
-                  const SizedBox(width: 5),
+                  10.verticalSpace,
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 30),
-                        child: Text(
-                          data,
-                          style: GoogleFonts.abel(fontSize: 16),
-                        ),
+                        child:
+                            Text(data, style: ThemeTextStyle.tMedium(context)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 28.0),
@@ -76,8 +74,8 @@ class WSaladButton extends StatelessWidget {
                           const SizedBox(width: 4),
                           Text(
                             "${sail}JD",
-                            style: GoogleFonts.abel(fontSize: 16),
-                            maxLines: 2,
+                            style: ThemeTextStyle.lLarge(context),
+                            maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ]),

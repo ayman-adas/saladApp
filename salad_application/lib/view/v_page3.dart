@@ -12,9 +12,6 @@ class VPage3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(
-          Icons.menu,
-        ),
         actions: [
           IconButton(
               onPressed: () => showSearch(
@@ -43,35 +40,30 @@ class VPage3 extends StatelessWidget {
               )),
           IconButton.outlined(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (BuildContext context) {
-                  return const VPacket();
-                }));
+                Navigator.pushNamed(context, MRouteName.packet);
               },
               icon: const Icon(
                 Icons.shopping_basket_outlined,
               ))
         ],
       ),
+      drawer: const Drawer(),
       body: Column(children: [
         SizedBox(
-            height: 160,
+            height: MDime.d1 * 690 - 460.h,
             child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: Column(children: [
                   Text(
-                    "${MLanguages.hello.tr()} $name ${MLanguages.page3title.tr()}",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w400, fontSize: 15),
-                  ),
-                  const Divider(
-                    color: Colors.black,
+                      "${MLanguages.hello.tr()} $name ${MLanguages.page3title.tr()}",
+                      style: ThemeTextStyle.tMedium(context)),
+                  Divider(
+                    color: ThemeColor.green,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
-                    child: const Text(MLanguages.saladcombo,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 30))
+                    child: Text(MLanguages.saladcombo,
+                            style: ThemeTextStyle.hMedium(context))
                         .tr(),
                   ),
                 ]))),
@@ -85,7 +77,7 @@ class VPage3 extends StatelessWidget {
               return MPage3.list[index];
             },
           ),
-        )
+        ),
       ]),
     );
   }

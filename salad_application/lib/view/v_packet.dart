@@ -39,9 +39,7 @@ class _VPacketState extends State<VPacket> {
           ),
         ),
         body: Column(children: [
-          Container(
-            height: 20,
-          ),
+          20.horizontalSpace,
           Expanded(
               child: AnimationLimiter(
                   child: ListView.builder(
@@ -85,40 +83,46 @@ class _VPacketState extends State<VPacket> {
                                         child: Row(
                                           children: [
                                             listview[index],
-                                            Flexible(
-                                              child: Align(
-                                                alignment:
-                                                    Alignment.centerRight,
-                                                child: ElevatedButton(
-                                                  onPressed: () {
-                                                    sailAll -=
-                                                        listview[index].sail;
-                                                    listview[index].counter = 0;
-                                                    setState(() {});
-                                                  },
-                                                  style: ButtonStyle(
-                                                      fixedSize:
-                                                          const MaterialStatePropertyAll(
-                                                              Size(60, 60)),
-                                                      shape: MaterialStateProperty
-                                                          .all(
-                                                              const CircleBorder()),
-                                                      backgroundColor:
-                                                          MaterialStateProperty
-                                                              .all(Colors.red),
-                                                      padding:
-                                                          const MaterialStatePropertyAll(
-                                                              EdgeInsets
-                                                                  .symmetric(
-                                                                      vertical:
-                                                                          22,
-                                                                      horizontal:
-                                                                          10))),
-                                                  child: const Text(
-                                                    "X",
-                                                    style: TextStyle(
-                                                      fontSize: 15,
-                                                    ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 30),
+                                              child: Flexible(
+                                                child: Align(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  child: ElevatedButton(
+                                                    onPressed: () {
+                                                      sailAll -=
+                                                          listview[index].sail;
+                                                      listview[index].counter =
+                                                          0;
+                                                      setState(() {});
+                                                    },
+                                                    style: ButtonStyle(
+                                                        fixedSize:
+                                                            MaterialStatePropertyAll(
+                                                                Size(
+                                                                    MDime.d1 *
+                                                                        50.w,
+                                                                    MDime.d1 *
+                                                                        50.h)),
+                                                        shape: MaterialStateProperty.all(
+                                                            const CircleBorder()),
+                                                        backgroundColor:
+                                                            MaterialStateProperty
+                                                                .all(
+                                                                    Colors.red),
+                                                        padding:
+                                                            const MaterialStatePropertyAll(
+                                                                EdgeInsets.symmetric(
+                                                                    vertical:
+                                                                        22,
+                                                                    horizontal:
+                                                                        22))),
+                                                    child: Text("X",
+                                                        style: ThemeTextStyle
+                                                            .lLarge(context)),
                                                   ),
                                                 ),
                                               ),
@@ -130,7 +134,7 @@ class _VPacketState extends State<VPacket> {
                       }))),
           Container(
               color: const Color.fromARGB(174, 255, 200, 0),
-              height: 100,
+              height: MDime.quarter * 690.h - 70,
               width: double.infinity,
               child: Center(child: show()))
         ]));

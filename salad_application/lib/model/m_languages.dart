@@ -1,4 +1,6 @@
 class MLanguages {
+  static const String nameproject = "naeme project";
+
   static const String page1title = "page1 title";
   static const String page1button = "page1 button";
   static const String page1body = "page1 body";
@@ -15,9 +17,10 @@ class MLanguages {
   static const String failure = "failure";
   static const String saladcombo = "salad combo";
   static const String hello = "hello";
+  static const String ok = "ok";
+
   static const String counter = "counter";
   static const String totalSails = "Total sails";
-
   static const String quantitydesc1 = "quantity desc1";
   static const String quantitydesc2 = "quantity desc2";
   static const String quantitybutton = "quantity button";
@@ -27,7 +30,6 @@ class MLanguages {
   static const String mango = "mango";
   static const String kiwi = "kiwi";
   static const String orange = "orange";
-
   static const String blueburrie = "blueburrie";
   static const String grabes = "grabes";
 }

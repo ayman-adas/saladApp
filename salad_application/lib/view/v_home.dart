@@ -12,7 +12,7 @@ class _VHomeState extends State<VHome> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: OnBoardingSlider(
-      controllerColor: const Color.fromARGB(255, 255, 200, 0),
+      controllerColor: ThemeColor.gold,
       headerBackgroundColor: const Color.fromARGB(255, 255, 200, 0),
       background: [
         Image.asset('assets/page1.png'),

@@ -5,14 +5,17 @@ class ThemeInitilPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ThemeScreen(
+        child: MaterialApp(
+      onGenerateTitle: (context) => MLanguages.nameproject.tr(),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: DarkLightTheme.themeLight(context),
       darkTheme: DarkLightTheme.themeDark(context),
-      home: const VHome(),
-    );
+      initialRoute: MRouteName.home,
+      routes: MRouteName.route,
+    ));
   }
 }

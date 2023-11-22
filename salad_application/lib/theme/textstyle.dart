@@ -1,6 +1,6 @@
 part of '../import/import.dart';
 
-class UtilsTheme {
+class ThemeTextStyle {
   // --------------- text font size big --------
 
   /// [dLarge]  displayLarge type: `Regular`  size: `57` space: `0`
@@ -76,6 +76,6 @@ class UtilsTheme {
   /// light -> `black`
   ///
   /// dark -> `white`
-  static Color mainColor(BuildContext context) =>
-      UtilsTheme.isDark(context) ? Colors.white : Colors.black;
+  static Brightness mainColor(BuildContext context) =>
+      ThemeTextStyle.isDark(context) ? Brightness.dark : Brightness.light;
 }

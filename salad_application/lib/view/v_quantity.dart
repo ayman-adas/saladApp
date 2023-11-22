@@ -33,18 +33,18 @@ class _VQuantityState extends State<VQuantity> {
           ),
         ),
         body: SizedBox(
-            width: double.infinity,
-            height: double.infinity,
+            width: MDime.fullScreen * 360.w,
+            height: MDime.fullScreen * 690.h,
             child: Column(children: [
               SizedBox(
-                height: 450,
+                height: MDime.half * 690.h,
                 child: Image.network(
                   widget.url,
-                  height: 400,
+                  height: MDime.half.h,
                 ),
               ),
               Center(
-                child: Text(widget.data, style: UtilsTheme.lMedium(context)),
+                child: Text(widget.data, style: ThemeTextStyle.hSmall(context)),
               ),
               Container(
                 padding: const EdgeInsets.fromLTRB(75, 10, 0, 0),
@@ -68,7 +68,7 @@ class _VQuantityState extends State<VQuantity> {
                       ),
                     ),
                     SizedBox(
-                      width: 20.0,
+                      width: MDime.d1 * 6,
                       child: Text(widget.counter.toString()),
                     ),
                     Padding(
@@ -96,24 +96,23 @@ class _VQuantityState extends State<VQuantity> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
+                padding: const EdgeInsets.fromLTRB(30, 10, 25, 0),
                 child: Text(
-                  "${MLanguages.quantitydesc1.tr()} ${widget.data} ${MLanguages.quantitydesc2.tr()}",
-                  style: const TextStyle(fontSize: 17),
-                ).tr(),
+                        " ${MLanguages.quantitydesc1.tr()}\n${widget.data} ${MLanguages.quantitydesc2.tr()}",
+                        style: ThemeTextStyle.tMedium(context))
+                    .tr(),
               ),
               Padding(
                   padding: const EdgeInsets.fromLTRB(5, 25, 0, 00),
                   child: ElevatedButton(
-                      style: const ButtonStyle(
-                          minimumSize: MaterialStatePropertyAll(Size(340, 60)),
+                      style: ButtonStyle(
+                          minimumSize: MaterialStatePropertyAll(
+                              Size(MDime.d7 * 130.w, MDime.d1.h * 30)),
                           backgroundColor:
-                              MaterialStatePropertyAll(Colors.orange)),
+                              MaterialStatePropertyAll(ThemeColor.gold)),
                       child: Text(MLanguages.quantitybutton.tr(),
-                          style: const TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                          )).tr(),
+                              style: ThemeTextStyle.tLarge(context))
+                          .tr(),
                       onPressed: () {
                         if (widget.counter < widget.counter2) {
                           sailAll -= widget.sail *

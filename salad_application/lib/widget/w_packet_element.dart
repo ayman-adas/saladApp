@@ -20,7 +20,7 @@ class WPacketSalad extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
         child: Container(
-            height: 130,
+            height: MDime.d3 * 690 - 600.h,
             color: Colors.transparent,
             margin: const EdgeInsets.all(5),
             child: Expanded(
@@ -36,30 +36,27 @@ class WPacketSalad extends StatelessWidget {
                         image: NetworkImage(
                           url,
                         ),
-                        width: 100,
-                        height: 100,
+                        width: MDime.d1 * 360 - 250.w,
+                        height: MDime.d1 * 690 - 450.h,
                       ),
                     )),
-                const SizedBox(width: 5),
+                5.horizontalSpace,
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 30),
-                      child: Text(
-                        data,
-                        style: GoogleFonts.abel(fontSize: 16),
-                      ),
+                      child: Text(data, style: ThemeTextStyle.tMedium(context)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 2.0),
                       child: Row(children: [
                         const Icon(Icons.money_outlined, color: Colors.grey),
-                        const SizedBox(width: 4),
+                        4.verticalSpace,
                         Text(
                           "$sail JD",
-                          style: GoogleFonts.abel(fontSize: 16),
+                          style: ThemeTextStyle.lLarge(context),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -69,8 +66,8 @@ class WPacketSalad extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: Text(
                         " ${MLanguages.counter.tr()}:$counter",
-                        style: GoogleFonts.abel(fontSize: 16),
-                        maxLines: 2,
+                        style: ThemeTextStyle.tSmall(context),
+                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                     )

@@ -7,10 +7,14 @@ class CErrorMassage extends StatelessWidget {
   final Function() callback;
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(content: Text(massage), actions: <Widget>[
+    return AlertDialog(content: Text(massage).tr(), actions: <Widget>[
       TextButton(
+        style: ButtonStyle(
+            textStyle: MaterialStatePropertyAll(ThemeTextStyle.tLarge(context)),
+            backgroundColor: MaterialStatePropertyAll(ThemeColor.gold),
+            foregroundColor: MaterialStatePropertyAll(ThemeColor.green)),
         onPressed: callback,
-        child: const Text('OK'),
+        child: const Text(MLanguages.ok).tr(),
       ),
     ]);
   }

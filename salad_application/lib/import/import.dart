@@ -4,20 +4,23 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
-
+import 'package:material_dialogs/material_dialogs.dart';
+import 'package:material_dialogs/widgets/buttons/icon_button.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:fruit_salad/model/m_languages.dart';
-import 'package:fruit_salad/model/m_page1.dart';
 
 import 'package:fruit_salad/model/m_salad_picture.dart';
 
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:regexpattern/regexpattern.dart';
 import 'package:search_page/search_page.dart';
+
 part '../model/m_page3.dart';
+part '../model/m_diminsion.dart';
+part '../model/m_route_name.dart';
 
 //view
 part '../view/v_home.dart';
@@ -44,6 +47,7 @@ part '../theme/textstyle.dart';
 part '../theme/dark_light_theme.dart';
 part '../theme/theme_color.dart';
 part '../theme/initlpage.dart';
+part '../theme/theme_screen.dart';
 
 double sailAll = 0;
 final TextEditingController textController = TextEditingController();

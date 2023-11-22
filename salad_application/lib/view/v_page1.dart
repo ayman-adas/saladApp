@@ -6,28 +6,28 @@ class VPage1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: double.infinity,
-        height: double.infinity,
+        width: MDime.fullScreen * 360.w,
+        height: MDime.fullScreen * 690.h,
         child: Column(children: [
           Container(
-            height: 500,
+            height: MDime.half * 690.h,
             color: const Color.fromARGB(255, 255, 200, 0),
             child: Image.asset(
               "assets/page1.png",
-              height: 400,
+              height: (MDime.half * 690 - 100).h,
             ),
           ),
           Container(
-              padding: const EdgeInsets.fromLTRB(5, 50, 0, 0),
-              child: const Text(
-                MLanguages.page1title,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
-              ).tr()),
+            padding: const EdgeInsets.fromLTRB(5, 50, 0, 0),
+            child: Text(MLanguages.page1title,
+                    style: ThemeTextStyle.hSmall(context))
+                .tr(),
+          ),
           Container(
-              padding: const EdgeInsets.fromLTRB(30, 25, 0, 0),
-              child: const Text(
+              padding: const EdgeInsets.fromLTRB(40, 50, 10, 0),
+              child: Text(
                 MLanguages.page1body,
-                style: TextStyle(fontSize: 17),
+                style: ThemeTextStyle.tSmall(context),
               ).tr()),
         ]));
   }
