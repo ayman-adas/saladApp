@@ -10,7 +10,7 @@ class DarkLightTheme {
         appBarTheme: AppBarTheme(
             backgroundColor: ThemeColor.appbar,
             elevation: 5,
-            iconTheme: IconThemeData(color: ThemeColor.green)),
+            iconTheme: IconThemeData(color: ThemeColor.red)),
         textTheme: Theme.of(context).textTheme.apply(
               displayColor: Colors.black,
               bodyColor: Colors.black,
@@ -37,4 +37,17 @@ class DarkLightTheme {
         buttonTheme: ButtonThemeData(
             buttonColor: ThemeColor.gold, textTheme: ButtonTextTheme.primary));
   }
+
+  /// [isDark] check theme when theme dark  return true otherwise false
+
+  static bool isDark(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark;
+
+  /// [mainColor] return color depended on theme
+  ///
+  /// light -> `black`
+  ///
+  /// dark -> `white`
+  static Brightness mainColor(BuildContext context) =>
+      DarkLightTheme.isDark(context) ? Brightness.dark : Brightness.light;
 }

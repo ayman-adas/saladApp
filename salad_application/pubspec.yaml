@@ -48,6 +48,7 @@ dependencies:
   material_dialogs: ^1.1.4
   adaptive_theme: ^3.4.1
   flutter_screenutil: ^5.9.0
+  url_launcher: ^6.2.1
 flutter_native_splash:
  
   web: false
@@ -100,6 +101,7 @@ flutter:
     - assets/page2.jpeg
     - assets/page3.png
     - assets/translations/
+    - assets/٢٠٢٣٠٤٢١_١٩١٤٠٢.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -12,7 +12,7 @@ class MLanguages {
   static const String page3title = "page3 title";
   static const String page3hint = "page3 hint";
   static const String page3body = "page3 body";
-  static const String searchLabel = "search Label";
+  static const String searchLabel = "searchLabel";
   static const String suggestion = "suggestion";
   static const String failure = "failure";
   static const String saladcombo = "salad combo";
@@ -32,4 +32,13 @@ class MLanguages {
   static const String orange = "orange";
   static const String blueburrie = "blueburrie";
   static const String grabes = "grabes";
+  static const String signOut = "signOut";
+  static const String account = "account";
+  static const String packet = "packet";
+  static const String language = "lang";
+  static const String apperance = "apperance";
+  static const String about = "about";
+  static const String aboutText = "aboutText";
+
+  static const String contact = "contact";
 }

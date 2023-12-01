@@ -35,31 +35,24 @@ class VPage3 extends StatelessWidget {
                           ListTile(
                             title: salad,
                           ))),
-              icon: const Icon(
-                Icons.search_rounded,
-              )),
+              icon: const Icon(MIcons.searchOutlined)),
           IconButton.outlined(
               onPressed: () {
                 Navigator.pushNamed(context, MRouteName.packet);
               },
-              icon: const Icon(
-                Icons.shopping_basket_outlined,
-              ))
+              icon: const Icon(MIcons.shoppingOutlined)),
         ],
       ),
-      drawer: const Drawer(),
+      drawer: const VMainDrawer(),
       body: Column(children: [
         SizedBox(
-            height: MDime.d1 * 690 - 460.h,
+            height: MDime.d1 * 690 - 500.h,
             child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: Column(children: [
                   Text(
                       "${MLanguages.hello.tr()} $name ${MLanguages.page3title.tr()}",
                       style: ThemeTextStyle.tMedium(context)),
-                  Divider(
-                    color: ThemeColor.green,
-                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Text(MLanguages.saladcombo,
@@ -67,6 +60,31 @@ class VPage3 extends StatelessWidget {
                         .tr(),
                   ),
                 ]))),
+        Divider(
+          color: DarkLightTheme.isDark(context)
+              ? ThemeColor.green
+              : ThemeColor.red,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            height: MDime.d3 * 690 - 600.h,
+            width: double.infinity,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: MPage3.list.length,
+              itemBuilder: (BuildContext context, int index) {
+                return SizedBox(
+                    width: MDime.d4 * 690 - 600.w, child: MPage3.list[index]);
+              },
+            ),
+          ),
+        ),
+        Divider(
+          color: DarkLightTheme.isDark(context)
+              ? ThemeColor.green
+              : ThemeColor.red,
+        ),
         Expanded(
           child: ListView.builder(
             padding: const EdgeInsets.all(8),

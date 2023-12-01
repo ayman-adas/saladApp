@@ -12,7 +12,11 @@ class CErrorMassage extends StatelessWidget {
         style: ButtonStyle(
             textStyle: MaterialStatePropertyAll(ThemeTextStyle.tLarge(context)),
             backgroundColor: MaterialStatePropertyAll(ThemeColor.gold),
-            foregroundColor: MaterialStatePropertyAll(ThemeColor.green)),
+            foregroundColor: MaterialStatePropertyAll(
+              DarkLightTheme.isDark(context)
+                  ? ThemeColor.green
+                  : ThemeColor.red,
+            )),
         onPressed: callback,
         child: const Text(MLanguages.ok).tr(),
       ),

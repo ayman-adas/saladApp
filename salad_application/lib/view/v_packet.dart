@@ -35,7 +35,7 @@ class _VPacketState extends State<VPacket> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () => Navigator.pop(context),
-            icon: const Icon(Icons.arrow_back_outlined),
+            icon: const Icon(MIcons.arrow),
           ),
         ),
         body: Column(children: [
@@ -83,47 +83,43 @@ class _VPacketState extends State<VPacket> {
                                         child: Row(
                                           children: [
                                             listview[index],
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 30),
-                                              child: Flexible(
-                                                child: Align(
-                                                  alignment:
-                                                      Alignment.centerRight,
-                                                  child: ElevatedButton(
-                                                    onPressed: () {
-                                                      sailAll -=
-                                                          listview[index].sail;
-                                                      listview[index].counter =
-                                                          0;
-                                                      setState(() {});
-                                                    },
-                                                    style: ButtonStyle(
-                                                        fixedSize:
-                                                            MaterialStatePropertyAll(
-                                                                Size(
-                                                                    MDime.d1 *
-                                                                        50.w,
-                                                                    MDime.d1 *
-                                                                        50.h)),
-                                                        shape: MaterialStateProperty.all(
-                                                            const CircleBorder()),
-                                                        backgroundColor:
-                                                            MaterialStateProperty
-                                                                .all(
-                                                                    Colors.red),
-                                                        padding:
-                                                            const MaterialStatePropertyAll(
-                                                                EdgeInsets.symmetric(
-                                                                    vertical:
-                                                                        22,
-                                                                    horizontal:
-                                                                        22))),
-                                                    child: Text("X",
-                                                        style: ThemeTextStyle
-                                                            .lLarge(context)),
-                                                  ),
+                                            Flexible(
+                                              child: Align(
+                                                alignment:
+                                                    Alignment.centerRight,
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    sailAll -=
+                                                        listview[index].sail;
+                                                    listview[index].counter = 0;
+                                                    setState(() {});
+                                                  },
+                                                  style: ButtonStyle(
+                                                      fixedSize:
+                                                          MaterialStatePropertyAll(
+                                                              Size(
+                                                                  MDime.d1 *
+                                                                      50.w,
+                                                                  MDime.d1 *
+                                                                      50.h)),
+                                                      shape: MaterialStateProperty
+                                                          .all(
+                                                              const CircleBorder()),
+                                                      backgroundColor:
+                                                          MaterialStateProperty
+                                                              .all(Colors.red),
+                                                      padding:
+                                                          const MaterialStatePropertyAll(
+                                                              EdgeInsets
+                                                                  .symmetric(
+                                                                      vertical:
+                                                                          22,
+                                                                      horizontal:
+                                                                          22))),
+                                                  child: Text("X",
+                                                      style:
+                                                          ThemeTextStyle.lLarge(
+                                                              context)),
                                                 ),
                                               ),
                                             ),

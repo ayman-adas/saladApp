@@ -67,15 +67,4 @@ class ThemeTextStyle {
   static TextStyle? lSmall(BuildContext context) =>
       Theme.of(context).textTheme.labelSmall;
 
-  /// [isDark] check theme when theme dark  return true otherwise false
-  static bool isDark(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.dark;
-
-  /// [mainColor] return color depended on theme
-  ///
-  /// light -> `black`
-  ///
-  /// dark -> `white`
-  static Brightness mainColor(BuildContext context) =>
-      ThemeTextStyle.isDark(context) ? Brightness.dark : Brightness.light;
 }

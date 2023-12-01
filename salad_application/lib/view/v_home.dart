@@ -14,6 +14,11 @@ class _VHomeState extends State<VHome> {
         body: OnBoardingSlider(
       controllerColor: ThemeColor.gold,
       headerBackgroundColor: const Color.fromARGB(255, 255, 200, 0),
+      skipIcon: Icon(
+        Icons.arrow_forward,
+        color:
+            DarkLightTheme.isDark(context) ? ThemeColor.green : ThemeColor.red,
+      ),
       background: [
         Image.asset('assets/page1.png'),
         Image.asset('assets/page2.jpeg'),

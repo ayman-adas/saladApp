@@ -32,23 +32,34 @@ class _VPage2State extends State<VPage2> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 maxLength: 10,
-                cursorColor: ThemeColor.green,
+                cursorColor: DarkLightTheme.isDark(context)
+                    ? ThemeColor.green
+                    : ThemeColor.red,
                 controller: textController,
                 decoration: InputDecoration(
                     filled: true,
                     contentPadding: const EdgeInsets.only(
                         left: 14.0, bottom: 8.0, top: 8.0),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: ThemeColor.green),
+                      borderSide: BorderSide(
+                        color: DarkLightTheme.isDark(context)
+                            ? ThemeColor.green
+                            : ThemeColor.red,
+                      ),
                       borderRadius: BorderRadius.circular(25.7),
                     ),
                     enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: ThemeColor.green),
+                      borderSide: BorderSide(
+                        color: DarkLightTheme.isDark(context)
+                            ? ThemeColor.green
+                            : ThemeColor.red,
+                      ),
                       borderRadius: BorderRadius.circular(25.7),
                     ),
                     border: const OutlineInputBorder(),
                     hintText: MLanguages.page2hint.tr(),
-                    hintStyle: ThemeTextStyle.lMedium(context)),
+                    hintStyle: const TextStyle(
+                        fontSize: 7, fontWeight: FontWeight.w200)),
                 textAlign: TextAlign.left,
               ),
             ),
@@ -61,14 +72,20 @@ class _VPage2State extends State<VPage2> {
                           MDime.quarter * 360 - 30.h)),
                       backgroundColor:
                           MaterialStatePropertyAll(ThemeColor.gold),
-                      foregroundColor:
-                          MaterialStatePropertyAll(ThemeColor.green),
+                      foregroundColor: MaterialStatePropertyAll(
+                        DarkLightTheme.isDark(context)
+                            ? ThemeColor.green
+                            : ThemeColor.red,
+                      ),
                     ),
                     child: Text(MLanguages.page2button,
                             style: ThemeTextStyle.tLarge(context))
                         .tr(),
                     onPressed: () {
-                      if (!textController.value.text.isUsername()) {
+                      RegExp regex = RegExp(r'^[a-zA-Z\u0600-\u06FF\s]{2,}$',
+                          caseSensitive: false);
+
+                      if (!regex.hasMatch(textController.text)) {
                         Dialogs.materialDialog(
                           title: MLanguages.page2errorMassage.tr(),
                           context: context,

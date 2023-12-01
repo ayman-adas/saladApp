@@ -16,7 +16,7 @@
     "page3body" : "We deliver the best and freshest fruit salad in town. Order for a combo today!!!",
     "searchLabel":"Search Fruit salad",
     "suggestion":"Filter Fruit salad by name.",
-    "failure":"No Fruit Salad found :(",
+    "failure":"No Fruit Salad found ",
     "saladcombo":"Fruit Salad Combo",
     "quantity desc1":"if you are looking for a new fruit salad today,",
     "quantity desc2" : "is the perfect branch for you make.",
@@ -28,6 +28,14 @@
     "kiwi": "Kiwi fruit salad",
     "orange":"Orange fruit salad",
     "blueburrie"  :"Blueburrie fruit salad",
-    "grabes":"Grabes fruit salad"
+    "grabes":"Grabes fruit salad",
+    "signOut":"sign out",
+     "account":"user account",
+     "packet":"packet",
+     "lang":"language",
+     "apperance":"apperance",
+     "about":"about us",
+     "aboutText":  "We are a fruit Salad provider. \n  we provides fruit salad to your home. \n  our online shooping we provide it in all the world  \n  with best price and best quality. \n  my orgnization has getten prizes in food such as \n  ayman prizes.",
+     "contact":"Contact Us"
    
    }

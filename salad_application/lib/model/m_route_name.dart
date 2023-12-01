@@ -7,6 +7,7 @@ class MRouteName {
   static const String page3 = "page3";
   static const String packet = "packet";
   static const String networkTest = "neworkTest";
+  static const String about = "about";
 
   static Map<String, WidgetBuilder> route = {
     home: (context) => const VHome(),
@@ -15,6 +16,7 @@ class MRouteName {
     page3: (context) => VPage3(
           name: textController.value.text,
         ),
+    about: (context) => const VAbout(),
     packet: (context) => const VPacket(),
     networkTest: (context) => const VTestNetwok(),
   };

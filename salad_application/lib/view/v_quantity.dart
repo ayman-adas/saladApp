@@ -26,7 +26,7 @@ class _VQuantityState extends State<VQuantity> {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back_outlined),
+            icon: const Icon(MIcons.arrow),
             onPressed: () => Navigator.pop(
               context,
             ),
