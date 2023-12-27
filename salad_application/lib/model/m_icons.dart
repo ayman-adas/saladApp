@@ -48,5 +48,30 @@ class MIcons {
   static const IconData userName = CupertinoIcons.person_fill;
 
   // arrowback
-  static const IconData arrow = Icons.arrow_back_outlined;
+  static const IconData arrowbac = Icons.arrow_back_outlined;
+  static const IconData arowfor = Icons.arrow_forward;
+
+  // video
+  static const IconData shoppingcupr = CupertinoIcons.shopping_cart;
+
+  // Favorite
+  static const IconData searchcurp = CupertinoIcons.search;
+
+  // upload news
+  static const IconData uploadcurp = CupertinoIcons.cloud_upload_fill;
+
+  static const IconData callcurp = CupertinoIcons.phone;
+
+  // theme
+  static const IconData themecurp = CupertinoIcons.light_max;
+
+  // about us
+  static const IconData aboutcurp = CupertinoIcons.info_circle_fill;
+
+  // arrowback
+  static const IconData arrowbaccurp = CupertinoIcons.arrow_left;
+  static const IconData arowforcurp = CupertinoIcons.arrow_right;
+  //question mark
+  static const IconData question = Icons.question_mark_outlined;
+  static const IconData questioncurp = CupertinoIcons.question_circle;
 }

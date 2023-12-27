@@ -17,8 +17,7 @@ class CServiceTabs extends StatelessWidget {
       iconColor:
           DarkLightTheme.isDark(context) ? ThemeColor.green : ThemeColor.red,
       titleTextStyle: ThemeTextStyle.lLarge(context)?.copyWith(
-        color:
-            DarkLightTheme.isDark(context) ? ThemeColor.green : ThemeColor.red,
+        color: DarkLightTheme.isDark(context) ? ThemeColor.white : Colors.black,
       ),
       onTap: onTap,
     );

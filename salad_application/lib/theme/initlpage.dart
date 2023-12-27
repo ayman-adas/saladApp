@@ -6,16 +6,9 @@ class ThemeInitilPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ThemeScreen(
-        child: MaterialApp(
-      onGenerateTitle: (context) => MLanguages.nameproject.tr(),
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      theme: DarkLightTheme.themeLight(context),
-      darkTheme: DarkLightTheme.themeDark(context),
-      initialRoute: MRouteName.home,
-      routes: MRouteName.route,
+        child: ThemeRestart(
+      child: AdaptiveThemeWidget(
+          builder: (light, dark) => MaterialWidget(light: light, dark: dark)),
     ));
   }
 }

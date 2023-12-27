@@ -41,4 +41,16 @@ class MLanguages {
   static const String aboutText = "aboutText";
 
   static const String contact = "contact";
+  static const String assistacne = "assistance";
+  static const String assistacneText = "assistanceText";
+  static const String assistacneMsg = "assistanceMsg";
+  static const String assistacneField = "assistanceField";
+  static const String quantitySnackBar = "quantitySnackBar";
+  static const String assistanceSnackBarTrue = "assistanceSnackBarTrue";
+
+  static const String assistanceSnackBarFalse = "assistanceSnackBarFalse";
+  static const String english = "english";
+  static const String arabic = "arabic";
+  static const String light = "light";
+  static const String dark = "dark";
 }

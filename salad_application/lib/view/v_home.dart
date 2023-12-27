@@ -10,12 +10,18 @@ class VHome extends StatefulWidget {
 class _VHomeState extends State<VHome> {
   @override
   Widget build(BuildContext context) {
+    IconData icon(BuildContext context) {
+      return ThemeTestphone.isIos(context)
+          ? MIcons.arowforcurp
+          : MIcons.arowfor;
+    }
+
     return Scaffold(
         body: OnBoardingSlider(
       controllerColor: ThemeColor.gold,
       headerBackgroundColor: const Color.fromARGB(255, 255, 200, 0),
       skipIcon: Icon(
-        Icons.arrow_forward,
+        icon(context),
         color:
             DarkLightTheme.isDark(context) ? ThemeColor.green : ThemeColor.red,
       ),

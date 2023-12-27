@@ -23,10 +23,91 @@ class VQuantity extends StatefulWidget {
 class _VQuantityState extends State<VQuantity> {
   @override
   Widget build(BuildContext context) {
+    CPacketList packetProvider = Provider.of<CPacketList>(context);
+    CPacketList page3Provider = Provider.of<CPacketList>(context);
+
+    IconData icon(BuildContext context) {
+      return ThemeTestphone.isIos(context)
+          ? MIcons.arrowbaccurp
+          : MIcons.arrowbac;
+    }
+
+    Widget buttom(
+      BuildContext context,
+    ) {
+      return ThemeTestphone.isIos(context)
+          ? CupertinoButton(
+              minSize: MDime.d1.h * 30,
+              color: ThemeColor.gold,
+              onPressed: () {
+                if (widget.counter < widget.counter2) {
+                  sailAll -=
+                      widget.sail * ((widget.counter - widget.counter2).abs());
+                } else {
+                  sailAll += widget.sail * ((widget.counter - widget.counter2));
+                }
+                packetProvider.changeCounter(widget.index, widget.counter);
+                page3Provider.changeCounter(widget.index, widget.counter);
+                packetProvider.changeSail(
+                    widget.index, widget.sail * widget.counter);
+                setState(() {});
+                Navigator.pop(context);
+
+// Find the ScaffoldMessenger in the widget tree
+// and use it to show a SnackBar.
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(MLanguages.quantitySnackBar.tr(),
+                        style: const TextStyle(color: Colors.white)),
+                    backgroundColor: DarkLightTheme.isDark(context)
+                        ? ThemeColor.green
+                        : ThemeColor.red,
+                  ),
+                );
+                Navigator.pushNamed(context, MRouteName.page3);
+              },
+              child: Text(MLanguages.quantitybutton.tr(),
+                  style: ThemeTextStyle.tLarge(context)))
+          : ElevatedButton(
+              style: ButtonStyle(
+                  minimumSize: MaterialStatePropertyAll(
+                      Size(MDime.d7 * 130.w, MDime.d1.h * 30)),
+                  backgroundColor: MaterialStatePropertyAll(ThemeColor.gold)),
+              child: Text(MLanguages.quantitybutton.tr(),
+                      style: ThemeTextStyle.tLarge(context))
+                  .tr(),
+              onPressed: () {
+                if (widget.counter < widget.counter2) {
+                  sailAll -=
+                      widget.sail * ((widget.counter - widget.counter2).abs());
+                } else {
+                  sailAll += widget.sail * ((widget.counter - widget.counter2));
+                }
+                packetProvider.changeCounter(widget.index, widget.counter);
+                page3Provider.changeCounter(widget.index, widget.counter);
+                packetProvider.changeSail(
+                    widget.index, widget.sail * widget.counter);
+                setState(() {});
+
+// Find the ScaffoldMessenger in the widget tree
+// and use it to show a SnackBar.
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(MLanguages.quantitySnackBar.tr(),
+                        style: const TextStyle(color: Colors.white)),
+                    backgroundColor: DarkLightTheme.isDark(context)
+                        ? ThemeColor.green
+                        : ThemeColor.red,
+                  ),
+                );
+                Navigator.pushNamed(context, MRouteName.page3);
+              });
+    }
+
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            icon: const Icon(MIcons.arrow),
+            icon: Icon(icon(context)),
             onPressed: () => Navigator.pop(
               context,
             ),
@@ -47,7 +128,7 @@ class _VQuantityState extends State<VQuantity> {
                 child: Text(widget.data, style: ThemeTextStyle.hSmall(context)),
               ),
               Container(
-                padding: const EdgeInsets.fromLTRB(75, 10, 0, 0),
+                padding: const EdgeInsets.fromLTRB(75, 10, 0, 0).w,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -68,11 +149,11 @@ class _VQuantityState extends State<VQuantity> {
                       ),
                     ),
                     SizedBox(
-                      width: MDime.d1 * 6,
+                      width: MDime.d9 * 10,
                       child: Text(widget.counter.toString()),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 5.0),
+                      padding: const EdgeInsets.only(right: 5.0).w,
                       child: ElevatedButton(
                         onPressed: () {
                           if (widget.counter < 98) {
@@ -87,50 +168,26 @@ class _VQuantityState extends State<VQuantity> {
                         child: const Icon(Icons.add),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 50),
-                      child: Icon(Icons.money_rounded),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 50).w,
+                      child: const Icon(Icons.money_rounded),
                     ),
                     Text("${widget.sail * widget.counter}JD")
                   ],
                 ),
               ),
               Container(
-                padding: const EdgeInsets.fromLTRB(30, 10, 25, 0),
+                padding: const EdgeInsets.fromLTRB(30, 10, 25, 0).w,
                 child: Text(
                         " ${MLanguages.quantitydesc1.tr()}\n${widget.data} ${MLanguages.quantitydesc2.tr()}",
                         style: ThemeTextStyle.tMedium(context))
                     .tr(),
               ),
               Padding(
-                  padding: const EdgeInsets.fromLTRB(5, 25, 0, 00),
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                          minimumSize: MaterialStatePropertyAll(
-                              Size(MDime.d7 * 130.w, MDime.d1.h * 30)),
-                          backgroundColor:
-                              MaterialStatePropertyAll(ThemeColor.gold)),
-                      child: Text(MLanguages.quantitybutton.tr(),
-                              style: ThemeTextStyle.tLarge(context))
-                          .tr(),
-                      onPressed: () {
-                        if (widget.counter < widget.counter2) {
-                          sailAll -= widget.sail *
-                              ((widget.counter - widget.counter2).abs());
-                        } else {
-                          sailAll += widget.sail *
-                              ((widget.counter - widget.counter2));
-                        }
-                        CPacketList.list[widget.index].counter = widget.counter;
-                        MPage3.list[widget.index].counter = widget.counter;
-                        CPacketList.list[widget.index].sail =
-                            widget.sail * widget.counter;
-                        setState(() {});
-
-                        Navigator.pop(
-                          context,
-                        );
-                      }))
+                  padding: const EdgeInsets.fromLTRB(5, 25, 0, 00).w,
+                  child: buttom(
+                    context,
+                  ))
             ])));
   }
 }

@@ -6,7 +6,7 @@
     "page2 title" :  "What is your First name",
     "page2 button":"Start Ordering",
     "page2 errorMassage":"there is no name. please insert your name.",
-    "page2 hint":"ayman",
+    "page2 hint":"your name",
     "page3 title" :"What fruit salad combo do you want today.",
     "page3 hint" : "Search For Fruit salad Combo",
     "hello":"hello",
@@ -35,7 +35,19 @@
      "lang":"language",
      "apperance":"apperance",
      "about":"about us",
-     "aboutText":  "We are a fruit Salad provider. \n  we provides fruit salad to your home. \n  our online shooping we provide it in all the world  \n  with best price and best quality. \n  my orgnization has getten prizes in food such as \n  ayman prizes.",
-     "contact":"Contact Us"
-   
+     "aboutText":  "We are a fruit Salad provider. we provides fruit salad to your home. our online shooping we provide it in all the world  with best price and best quality. my orgnization has getten prizes in food such as ayman prizes.",
+     "contact":"Contact Us",
+     "assistance":"assistance center",
+     "assistanceText":"hello, write your proplem",
+     "assistancefield":" write your proplem",
+     "quantitySnackBar":"this item is add or update in a packet",
+     "assistanceSnackBarTrue":"thanks for your massage we are will fix your proplem as fast we can",
+     "assistanceSnackBarFalse":"its not a massege",
+     "arabic":"arabic",
+     "english":"english",
+     "light":"light mode",
+     "dark":"dark mode"
+
+
+
    }

@@ -10,6 +10,16 @@ class VPage3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    IconData iconShopping(BuildContext context) {
+      return ThemeTestphone.isIos(context)
+          ? MIcons.shoppingcupr
+          : MIcons.shopping;
+    }
+
+    IconData iconSearch(BuildContext context) {
+      return ThemeTestphone.isIos(context) ? MIcons.searchcurp : MIcons.search;
+    }
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -35,12 +45,13 @@ class VPage3 extends StatelessWidget {
                           ListTile(
                             title: salad,
                           ))),
-              icon: const Icon(MIcons.searchOutlined)),
+              icon: Icon(iconSearch(context))),
           IconButton.outlined(
-              onPressed: () {
-                Navigator.pushNamed(context, MRouteName.packet);
-              },
-              icon: const Icon(MIcons.shoppingOutlined)),
+            onPressed: () {
+              Navigator.pushNamed(context, MRouteName.packet);
+            },
+            icon: Icon(iconShopping(context)),
+          )
         ],
       ),
       drawer: const VMainDrawer(),
@@ -48,13 +59,13 @@ class VPage3 extends StatelessWidget {
         SizedBox(
             height: MDime.d1 * 690 - 500.h,
             child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0).w,
                 child: Column(children: [
                   Text(
                       "${MLanguages.hello.tr()} $name ${MLanguages.page3title.tr()}",
                       style: ThemeTextStyle.tMedium(context)),
                   Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
+                    padding: const EdgeInsets.only(top: 8.0).h,
                     child: Text(MLanguages.saladcombo,
                             style: ThemeTextStyle.hMedium(context))
                         .tr(),

@@ -64,8 +64,8 @@ class WSaladButton extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 30),
-                        child:
-                            Text(data, style: ThemeTextStyle.tMedium(context)),
+                        child: Text(data.tr(),
+                            style: ThemeTextStyle.tMedium(context)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 28.0),

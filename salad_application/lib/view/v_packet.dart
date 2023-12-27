@@ -35,7 +35,7 @@ class _VPacketState extends State<VPacket> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () => Navigator.pop(context),
-            icon: const Icon(MIcons.arrow),
+            icon: const Icon(MIcons.arrowbac),
           ),
         ),
         body: Column(children: [

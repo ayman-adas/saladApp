@@ -49,6 +49,8 @@ dependencies:
   adaptive_theme: ^3.4.1
   flutter_screenutil: ^5.9.0
   url_launcher: ^6.2.1
+  flutter_svg: ^2.0.9
+  provider: ^6.1.1
 flutter_native_splash:
  
   web: false
@@ -102,6 +104,10 @@ flutter:
     - assets/page3.png
     - assets/translations/
     - assets/٢٠٢٣٠٤٢١_١٩١٤٠٢.png
+    - assets/arabic.svg
+    - assets/english.svg
+    - assets/helal.svg
+    - assets/shams.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

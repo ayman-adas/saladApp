@@ -8,6 +8,11 @@ class MRouteName {
   static const String packet = "packet";
   static const String networkTest = "neworkTest";
   static const String about = "about";
+  static const String assistance = "assistance";
+
+  static const String signout = "signout";
+  static const String themeChange = "themeChange";
+  static const String langhange = "langChange";
 
   static Map<String, WidgetBuilder> route = {
     home: (context) => const VHome(),
@@ -17,7 +22,14 @@ class MRouteName {
           name: textController.value.text,
         ),
     about: (context) => const VAbout(),
+    assistance: (context) => const VAssistance(),
     packet: (context) => const VPacket(),
     networkTest: (context) => const VTestNetwok(),
+    themeChange: (context) => VThemeChange(),
+    langhange: (context) => VLangChange(),
+    signout: (context) => const WSignout(
+          title: Text('signout'),
+          content: Text('do you want to signout'),
+        ),
   };
 }

@@ -5,11 +5,17 @@ class VAbout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    IconData icon(BuildContext context) {
+      return ThemeTestphone.isIos(context)
+          ? MIcons.arowforcurp
+          : MIcons.arowfor;
+    }
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: const Icon(MIcons.arrow),
+          icon: Icon(icon(context)),
         ),
       ),
       body: Column(children: [
@@ -20,28 +26,33 @@ class VAbout extends StatelessWidget {
             height: MDime.quarter * 960.h,
           ),
         ),
-        MDime.sm.horizontalSpace,
+        MDime.md.verticalSpace,
         Center(
           child: Text(MLanguages.about.tr(),
               style: ThemeTextStyle.dMedium(context)),
         ),
-        Padding(
-          padding: const EdgeInsets.all(MDime.sm * 5),
+        MDime.md.verticalSpace,
+        Align(
+          alignment: AlignmentDirectional.centerStart,
           child: Text(
             MLanguages.aboutText.tr(),
             style: ThemeTextStyle.bLarge(context),
           ),
         ),
+        MDime.md.verticalSpace,
         Center(
           child: Text(
             MLanguages.contact.tr(),
             style: ThemeTextStyle.hLarge(context),
           ),
         ),
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.only(left: MDime.xl + 15, top: MDime.l),
+        MDime.md.verticalSpace,
+        MDime.md.verticalSpace,
+        Align(
+          alignment: AlignmentDirectional.center,
+          child: Center(
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
                     onTap: () async {
@@ -54,6 +65,7 @@ class VAbout extends StatelessWidget {
                       }
                     },
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Icon(MIcons.facebook),
                         Text(

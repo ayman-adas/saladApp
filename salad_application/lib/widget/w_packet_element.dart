@@ -22,7 +22,7 @@ class WPacketSalad extends StatelessWidget {
         child: Container(
             height: MDime.d3 * 690 - 600.h,
             color: Colors.transparent,
-            margin: const EdgeInsets.all(5),
+            margin: const EdgeInsets.all(5).w,
             child: Expanded(
               child: Row(children: [
                 Container(
@@ -46,11 +46,12 @@ class WPacketSalad extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 30),
-                      child: Text(data, style: ThemeTextStyle.tMedium(context)),
+                      padding: const EdgeInsets.only(top: 30).h,
+                      child: Text(data.tr(),
+                          style: ThemeTextStyle.tMedium(context)),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 2.0),
+                      padding: const EdgeInsets.only(bottom: 2.0).h,
                       child: Row(children: [
                         const Icon(Icons.money_outlined, color: Colors.grey),
                         4.verticalSpace,
@@ -63,7 +64,7 @@ class WPacketSalad extends StatelessWidget {
                       ]),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
+                      padding: const EdgeInsets.only(bottom: 8.0).h,
                       child: Text(
                         " ${MLanguages.counter.tr()}:$counter",
                         style: ThemeTextStyle.tSmall(context),
