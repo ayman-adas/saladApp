@@ -2,6 +2,9 @@ part of '../import/import.dart';
 
 class MRouteName {
   static const String home = "home";
+  static const String login = "login";
+  static const String signup = "signup";
+
   static const String page1 = "page1";
   static const String page2 = "page2";
   static const String page3 = "page3";
@@ -16,6 +19,8 @@ class MRouteName {
 
   static Map<String, WidgetBuilder> route = {
     home: (context) => const VHome(),
+    login: (context) => const VLogin(),
+    signup: (context) => const VSignUp(),
     page1: (context) => const VPage1(),
     page2: (context) => const VPage2(),
     page3: (context) => VPage3(

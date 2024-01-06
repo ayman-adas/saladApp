@@ -46,8 +46,19 @@
      "arabic":"arabic",
      "english":"english",
      "light":"light mode",
-     "dark":"dark mode"
-
+     "dark":"dark mode",
+     "login":"login",
+      "signup":"sign up?",
+      "password":"password",
+      "email":"Email adress",
+      "noconnect":"Doesnt Connect With Firebase",
+      "nodata":"No Data Found",
+      "forgetPass":"Forget Password ?",
+      "camera":"Camera",
+      "gallery":"Gallery",
+      "choosePicture":"Choose Picture",
+      "cancel":"Cancel",
+      "dontHaveAccount":"Dont have an account"
 
 
    }

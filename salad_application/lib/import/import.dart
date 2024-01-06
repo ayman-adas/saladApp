@@ -1,13 +1,20 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:bottom_sheet/bottom_sheet.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruit_salad/firebase_options.dart';
 import 'package:fruit_salad/model/m_about.dart';
+import 'package:fruit_salad/model/m_login.dart';
 import 'package:fruit_salad/model/m_svg.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'dart:developer' as developer;
 import 'package:material_dialogs/material_dialogs.dart';
 import 'package:material_dialogs/widgets/buttons/icon_button.dart';
@@ -58,6 +65,10 @@ part '../Drawer/w_signout.dart';
 //widget
 part '../widget/w_packet_element.dart';
 part '../widget/w_theme_lanfuase_change.dart';
+part '../widget/textField.dart';
+part '../widget/w_bottom_sheet.dart';
+
+part '../widget/w_image_auth.dart';
 
 part '../widget/w_salad_button.dart';
 //controll
@@ -76,6 +87,19 @@ part '../theme/test_ypur_phone.dart';
 part '../theme/adaptivetheme.dart';
 part '../theme/material.dart';
 part '../theme/themeRestart.dart';
+//
+
+part './../view/v_login.dart';
+part './../view/v_signup.dart';
+part './../widget/w_progress.dart';
+part './../widget/w_search.dart';
+part './../widget/w_signout.dart';
+part './../widget/w_snack_bar.dart';
+part './../controller/c_auth_image.dart';
+part './../controller/c_security.dart';
+part './../theme/t_firebaces.dart';
 
 double sailAll = 0;
 final TextEditingController textController = TextEditingController();
+final TextEditingController emailController = TextEditingController();
+final TextEditingController passController = TextEditingController();

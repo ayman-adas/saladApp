@@ -1,6 +1,7 @@
+// ignore: must_be_immutable
+
 part of '../import/import.dart';
 
-// ignore: must_be_immutable
 class VLangChange extends StatelessWidget {
   VLangChange({super.key});
 

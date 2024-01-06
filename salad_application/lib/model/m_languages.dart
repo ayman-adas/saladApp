@@ -53,4 +53,16 @@ class MLanguages {
   static const String arabic = "arabic";
   static const String light = "light";
   static const String dark = "dark";
+  static const String login = "login";
+  static const String signup = "signup";
+  static const String password = "password";
+  static const String email = "email";
+  static const String noconnect = "noconnect";
+  static const String nodata = "nodata";
+  static const String camera = "camera";
+  static const String forgetPass = "forgetPass";
+  static const String gallery = "gallery";
+  static const String cancel = "cancel";
+  static const String choosePicture = "choosePicture";
+  static const String dontHaveAccount = "dontHaveAccount";
 }

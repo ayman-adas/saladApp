@@ -15,4 +15,10 @@ class MSadalPictureListItem {
 
   static const String iamge7 =
       'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Fruktsallad_%28Fruit_salad%29.jpg/1200px-Fruktsallad_%28Fruit_salad%29.jpg';
+  static const String gallery =
+      "https://cdn-icons-png.flaticon.com/512/4503/4503941.png";
+  static const String camera =
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Circle-icons-camera.svg/1200px-Circle-icons-camera.svg.png";
+  static const String userImage =
+      "https://cdn-icons-png.flaticon.com/512/1144/1144760.png";
 }
