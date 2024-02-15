@@ -12,29 +12,31 @@ class MRouteName {
   static const String networkTest = "neworkTest";
   static const String about = "about";
   static const String assistance = "assistance";
+  static const String forgetPass = "forgetPass";
 
   static const String signout = "signout";
   static const String themeChange = "themeChange";
   static const String langhange = "langChange";
+  static const String initalPage = "initPage";
 
   static Map<String, WidgetBuilder> route = {
     home: (context) => const VHome(),
+    initalPage: (context) => const TFirebase(),
     login: (context) => const VLogin(),
-    signup: (context) => const VSignUp(),
+    signup: (context) => const ViewRegister(),
     page1: (context) => const VPage1(),
     page2: (context) => const VPage2(),
-    page3: (context) => VPage3(
-          name: textController.value.text,
-        ),
+    page3: (context) => const VPage3(),
     about: (context) => const VAbout(),
+    forgetPass: (context) => const ViewForgotPass(),
     assistance: (context) => const VAssistance(),
     packet: (context) => const VPacket(),
-    networkTest: (context) => const VTestNetwok(),
-    themeChange: (context) => VThemeChange(),
-    langhange: (context) => VLangChange(),
-    signout: (context) => const WSignout(
-          title: Text('signout'),
-          content: Text('do you want to signout'),
+    // networkTest: (context) => const VTestNetwok(),
+    themeChange: (context) => const VThemeChange(),
+    langhange: (context) => const VLangChange(),
+    signout: (context) => WSignout(
+          title: Text(MLanguages.signOut.tr()),
+          content: Text(MLanguages.signOutMsg.tr()),
         ),
   };
 }

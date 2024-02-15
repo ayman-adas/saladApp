@@ -7,6 +7,7 @@ class CErrorMassage extends StatelessWidget {
   final Function() callback;
   @override
   Widget build(BuildContext context) {
+    //alert for error masseges
     return AlertDialog(content: Text(massage).tr(), actions: <Widget>[
       TextButton(
         style: ButtonStyle(

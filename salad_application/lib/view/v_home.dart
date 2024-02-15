@@ -31,7 +31,7 @@ class _VHomeState extends State<VHome> {
       ],
       totalPage: 2,
       speed: 1.8,
-      pageBodies: const [VPage1(), VPage2()],
+      pageBodies: const [VPage1(), VLogin()],
     ));
   }
 }

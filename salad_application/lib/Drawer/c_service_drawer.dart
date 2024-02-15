@@ -10,43 +10,20 @@ class CDraerrServer extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            CServiceTabs(
-              icon: MIcons.accountoutlier,
-              title: MLanguages.account,
-              onTap: () {},
-            ),
+            //bottom for search
             CServiceTabs(
                 icon: MIcons.searchOutlined,
                 title: MLanguages.searchLabel,
-                onTap: () {
-                  showSearch(
-                      context: context,
-                      delegate: SearchPage<WSaladButton>(
-                          searchStyle: const TextStyle(),
-                          items: MPage3.list,
-                          searchLabel: MLanguages.searchLabel.tr(),
-                          suggestion: Center(
-                            child: const Text(MLanguages.suggestion).tr(),
-                          ),
-                          failure: Center(
-                            child: const Text(MLanguages.failure).tr(),
-                          ),
-                          filter: (WSaladButton salad) => [
-                                salad.data,
-                              ],
-                          builder: (
-                            WSaladButton salad,
-                          ) =>
-                              ListTile(
-                                title: salad,
-                              )));
-                }),
+                onTap: () =>
+                    showSearch(context: context, delegate: WSearch.searcch)),
+            //bottom for packet
             CServiceTabs(
                 icon: MIcons.shoppingOutlined,
                 title: MLanguages.packet,
                 onTap: () {
                   Navigator.pushNamed(context, MRouteName.packet);
                 }),
+            //bottom for change theam
             CServiceTabs(
               icon: MIcons.themeOutlined,
               title: MLanguages.apperance,
@@ -54,6 +31,7 @@ class CDraerrServer extends StatelessWidget {
                 Navigator.pushNamed(context, MRouteName.themeChange);
               },
             ),
+            //bottom for change language
             CServiceTabs(
               icon: MIcons.langOutlined,
               title: MLanguages.language,
@@ -61,6 +39,7 @@ class CDraerrServer extends StatelessWidget {
                 Navigator.pushNamed(context, MRouteName.langhange);
               },
             ),
+            //bottom for assistance question
             CServiceTabs(
               icon: MIcons.question,
               title: MLanguages.assistacne,
@@ -68,6 +47,7 @@ class CDraerrServer extends StatelessWidget {
                 Navigator.pushNamed(context, MRouteName.assistance);
               },
             ),
+            //bottom for about us
             CServiceTabs(
               icon: MIcons.aboutOutlined,
               title: MLanguages.about,
@@ -75,6 +55,7 @@ class CDraerrServer extends StatelessWidget {
                 Navigator.pushNamed(context, MRouteName.about);
               },
             ),
+            //bottom for sign out
             CServiceTabs(
                 icon: MIcons.signOut,
                 title: MLanguages.signOut,

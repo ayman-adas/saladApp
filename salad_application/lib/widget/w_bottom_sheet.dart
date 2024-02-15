@@ -6,14 +6,18 @@ class WidgetDesignBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // create controller image user
-    ControllerAuthImageUser authImage =
-        Provider.of<ControllerAuthImageUser>(context);
+    ControllerImage authImage =
+        Provider.of<ControllerImage>(context, listen: false);
     return SizedBox(
-        height: (MDime.xxxxl + MDime.xxxxl + MDime.xxxxl).h,
+        height: (MDime.xxxxl).h,
         child: Column(
           children: [
             // title
-            Flexible(child: Text(MLanguages.choosePicture.tr())),
+            Flexible(
+                child: Text(
+              MLanguages.choosePicture.tr(),
+              style: ThemeTextStyle.dSmall(context),
+            )),
 
             // space
             MDime.l.verticalSpace,
@@ -25,15 +29,14 @@ class WidgetDesignBottomSheet extends StatelessWidget {
                   child: WImageAuth(
                     url: MSadalPictureListItem.gallery,
                     data: MLanguages.gallery,
-                    onTap: () => authImage.selectImage(context),
+                    onTap: () => authImage.selectImage(context, true),
                   ),
                 ),
                 Expanded(
                   child: WImageAuth(
                     url: MSadalPictureListItem.camera,
                     data: MLanguages.camera,
-                    onTap: () =>
-                        authImage.selectImage(context, isGallery: false),
+                    onTap: () => authImage.selectImage(context, false),
                   ),
                 ),
               ],

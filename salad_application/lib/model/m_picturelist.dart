@@ -21,4 +21,6 @@ class MSadalPictureListItem {
       "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Circle-icons-camera.svg/1200px-Circle-icons-camera.svg.png";
   static const String userImage =
       "https://cdn-icons-png.flaticon.com/512/1144/1144760.png";
+  static const String pencil =
+      "https://cdn-icons-png.flaticon.com/512/266/266146.png";
 }

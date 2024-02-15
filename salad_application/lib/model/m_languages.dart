@@ -1,5 +1,5 @@
 class MLanguages {
-  static const String nameproject = "naeme project";
+  static const String nameproject = "name project";
 
   static const String page1title = "page1 title";
   static const String page1button = "page1 button";
@@ -65,4 +65,16 @@ class MLanguages {
   static const String cancel = "cancel";
   static const String choosePicture = "choosePicture";
   static const String dontHaveAccount = "dontHaveAccount";
+  static const String username = "username";
+  static const String passAssurance = "passAssurance";
+  static const String phone = "phone";
+  static const String forgetPassText = "forgetPassText";
+  static const String emailError = "emailError";
+  static const String passError = "passError";
+  static const String forgetBar = "forgetBar";
+  static const String userError = "userError";
+  static const String passAsurError = "passAsurError";
+  static const String signOutMsg = "signOutMsg";
+  static const String haveAccount = "haveAccount";
+  static const String resetPass = "resetPass";
 }

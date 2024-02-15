@@ -22,7 +22,7 @@ class WImageAuth extends StatelessWidget {
               ),
               Text(
                 data.tr(),
-                style: ThemeTextStyle.lLarge(context),
+                style: ThemeTextStyle.hMedium(context),
               )
             ],
           ),

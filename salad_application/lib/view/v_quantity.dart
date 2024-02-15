@@ -125,7 +125,8 @@ class _VQuantityState extends State<VQuantity> {
                 ),
               ),
               Center(
-                child: Text(widget.data, style: ThemeTextStyle.hSmall(context)),
+                child: Text(widget.data.tr(),
+                    style: ThemeTextStyle.hSmall(context)),
               ),
               Container(
                 padding: const EdgeInsets.fromLTRB(75, 10, 0, 0).w,

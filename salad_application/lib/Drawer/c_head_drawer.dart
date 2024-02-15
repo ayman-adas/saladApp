@@ -5,6 +5,7 @@ class CDrawerHead extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ControllerAuth auth = Provider.of<ControllerAuth>(context, listen: false);
     return Padding(
       padding: const EdgeInsets.all(MDime.l),
       child: Column(
@@ -18,22 +19,24 @@ class CDrawerHead extends StatelessWidget {
                       : ThemeColor.red,
                   width: MDime.xs),
             ),
+            //circle picture for user
             child: CircleAvatar(
                 backgroundColor: DarkLightTheme.isDark(context)
                     ? ThemeColor.green
                     : ThemeColor.red,
-                backgroundImage:
-                    const AssetImage('./assets/٢٠٢٣٠٤٢١_١٩١٤٠٢.png'),
+                backgroundImage: NetworkImage(auth.userPhoto),
                 radius: 50.0),
           ),
           MDime.base.verticalSpace,
+          //username
           Text(
-            textController.value.text,
+            auth.userName,
             style: ThemeTextStyle.bLarge(context),
           ),
           MDime.base.verticalSpace,
+          //email
           Text(
-            'aymanhaniadas28@gmail.com',
+            auth.userEmail,
             style: ThemeTextStyle.bLarge(context),
           )
         ],

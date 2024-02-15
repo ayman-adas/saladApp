@@ -3,7 +3,7 @@
 part of '../import/import.dart';
 
 class VLangChange extends StatelessWidget {
-  VLangChange({super.key});
+  const VLangChange({super.key});
 
   @override
   Widget build(BuildContext context) {

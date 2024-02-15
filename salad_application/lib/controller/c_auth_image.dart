@@ -1,36 +1,34 @@
 part of './../import/import.dart';
 
-class ControllerAuthImageUser extends ChangeNotifier {
-  /// [imageUser] goal is save image user
-  XFile?imageUser;
+class ControllerImage extends ChangeNotifier {
+  /// [image] goal is save image user
+  XFile? image;
 
   /// [selectImage] choice image from gallery
-  Future<void> selectImage(BuildContext context,
-      {bool isGallery = true}) async {
+  Future<void> selectImage(BuildContext context, bool isGallery) async {
     // create object from picker
     final ImagePicker picker = ImagePicker();
 
     // way get image user (gallery)
-    imageUser = await picker.pickImage(
+    image = await picker.pickImage(
       source: isGallery ? ImageSource.gallery : ImageSource.camera,
     );
 
-    if (imageUser != null && context.mounted) {
+    if (image != null && context.mounted) {
       Navigator.pop(context);
+      cropImage();
     }
-
-    cropImage();
   }
 
   /// [cropImage] open edit image
   Future<void> cropImage() async {
-    if (imageUser != null) {
+    if (image != null) {
       CroppedFile? croppedFile =
-          await ImageCropper().cropImage(sourcePath: imageUser!.path);
+          await ImageCropper().cropImage(sourcePath: image!.path);
 
       if (croppedFile != null) {
         // convert XFile
-        imageUser = XFile(croppedFile.path);
+        image = XFile(croppedFile.path);
       }
 
       notifyListeners();
@@ -41,10 +39,48 @@ class ControllerAuthImageUser extends ChangeNotifier {
   /// image picker return File
   /// is not return Network image default
   ImageProvider getImageUser() {
-    if (imageUser != null) {
-      return FileImage(File(imageUser!.path));
+    if (image != null) {
+      return FileImage(File(image!.path));
     } else {
       return const NetworkImage(MSadalPictureListItem.userImage);
     }
+  }
+
+  /// [uploadImage] upload image user in firebase storage
+  ///  when choice upload this image or not upload default image save just one
+  ///  return image user when complete upload image
+  Future<String?> uploadImage(String pathFolder) async {
+    try {
+      // handel image user selected or not
+      if (image != null) {
+        // name image path : download/mohamed.png
+        String nameImage = p.basename(image!.path);
+
+        // info image user upload
+        UploadTask uploadTask = FirebaseStorage.instance
+            .ref()
+            .child('$pathFolder/$nameImage')
+            .putData(await image!.readAsBytes());
+
+        // down upload image user
+        TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => {});
+
+        // download image user
+        String urlImage = await taskSnapshot.ref.getDownloadURL();
+
+        // return image upload
+        return urlImage;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /// reset image
+  void resetImage() {
+    image = null;
+    notifyListeners();
   }
 }

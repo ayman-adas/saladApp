@@ -16,7 +16,7 @@ class TFirebase extends StatelessWidget {
           }
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
-              return const VHome();
+              return const Wrapper();
             } else {
               return CErrorMassage(massage: MLanguages.nodata, callback: () {});
             }

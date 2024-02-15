@@ -1,7 +1,6 @@
 part of './../import/import.dart';
 // ignore_for_file: unused_element, non_constant_identifier_names
 
-
 class WSnackBar {
   // Find the ScaffoldMessenger in the widget tree
 // and use it to show a SnackBar .

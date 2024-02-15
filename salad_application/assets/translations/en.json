@@ -30,6 +30,7 @@
     "blueburrie"  :"Blueburrie fruit salad",
     "grabes":"Grabes fruit salad",
     "signOut":"sign out",
+     "signOutMsg":"do you want to signout",
      "account":"user account",
      "packet":"packet",
      "lang":"language",
@@ -58,7 +59,19 @@
       "gallery":"Gallery",
       "choosePicture":"Choose Picture",
       "cancel":"Cancel",
-      "dontHaveAccount":"Dont have an account"
+      "dontHaveAccount":"Dont have an account",
+      "username":"‘sername",
+      "passAssurance":"password confirmation",
+      "phone":"Phone Number",
+      "profileImage":"Choose Your Profile Image",
+      "forgetPassText":"NO Worries, We Will Send you reset instructions.",
+      "emailError":"email adress must contain letters , @ and .",
+      "passError":"password must contain at least 6 digits , contain letters and number",
+      "userError":"username should have your name contain only letters",
+      "passAsurError":"this Pasasword Assurance must be like password",
+      "forgetBar":"We Send a massage in your email ,check it.\nif you dont recive a massage retry ",
+      "haveAccount":"have account ?",
+      "resetPass":"reset password"
 
 
    }

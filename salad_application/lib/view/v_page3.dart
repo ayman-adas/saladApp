@@ -3,10 +3,9 @@
 part of '../import/import.dart';
 
 class VPage3 extends StatelessWidget {
-  VPage3({super.key, required this.name});
-  final String name;
-
-  final TextEditingController textController = TextEditingController();
+  const VPage3({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,36 +15,13 @@ class VPage3 extends StatelessWidget {
           : MIcons.shopping;
     }
 
-    IconData iconSearch(BuildContext context) {
-      return ThemeTestphone.isIos(context) ? MIcons.searchcurp : MIcons.search;
-    }
-
     return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () => showSearch(
-                  context: context,
-                  delegate: SearchPage<WSaladButton>(
-                      searchStyle: const TextStyle(),
-                      items: MPage3.list,
-                      searchLabel: MLanguages.searchLabel.tr(),
-                      suggestion: Center(
-                        child: const Text(MLanguages.suggestion).tr(),
-                      ),
-                      failure: Center(
-                        child: const Text(MLanguages.failure).tr(),
-                      ),
-                      filter: (WSaladButton salad) => [
-                            salad.data,
-                          ],
-                      builder: (
-                        WSaladButton salad,
-                      ) =>
-                          ListTile(
-                            title: salad,
-                          ))),
-              icon: Icon(iconSearch(context))),
+              onPressed: () =>
+                  showSearch(context: context, delegate: WSearch.searcch),
+              icon: const Icon(MIcons.search)),
           IconButton.outlined(
             onPressed: () {
               Navigator.pushNamed(context, MRouteName.packet);
@@ -62,10 +38,10 @@ class VPage3 extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0).w,
                 child: Column(children: [
                   Text(
-                      "${MLanguages.hello.tr()} $name ${MLanguages.page3title.tr()}",
+                      "${MLanguages.hello.tr()}  ${MLanguages.page3title.tr()}",
                       style: ThemeTextStyle.tMedium(context)),
                   Padding(
-                    padding: const EdgeInsets.only(top: 8.0).h,
+                    padding: const EdgeInsets.only(top: 2.0).h,
                     child: Text(MLanguages.saladcombo,
                             style: ThemeTextStyle.hMedium(context))
                         .tr(),

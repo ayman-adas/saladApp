@@ -2,40 +2,52 @@ part of './../import/import.dart';
 
 class VLogin extends StatelessWidget {
   const VLogin({super.key});
+  static final GlobalKey<FormState> _keyForm = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    Widget buttom(
-      BuildContext context,
-    ) {
-      return ThemeTestphone.isIos(context)
-          ? CupertinoButton(
-              color: ThemeColor.gold,
-              minSize: MDime.quarter * 360 - 30.h,
-              onPressed: () {},
-              child: Text(MLanguages.page2button.tr(),
-                  style: ThemeTextStyle.tLarge(context)))
-          : ElevatedButton(
-              style: ButtonStyle(
-                minimumSize: MaterialStatePropertyAll(Size(
-                    (MDime.fullScreen * 310).w, MDime.quarter * 360 - 30.h)),
-                backgroundColor: MaterialStatePropertyAll(ThemeColor.gold),
-                foregroundColor: MaterialStatePropertyAll(
-                  DarkLightTheme.isDark(context)
-                      ? ThemeColor.green
-                      : ThemeColor.red,
-                ),
-              ),
-              child: Text(MLanguages.login.tr(),
-                      style: ThemeTextStyle.tLarge(context))
-                  .tr(),
-              onPressed: () {});
-    }
+    ControllerAuth auth = Provider.of<ControllerAuth>(context, listen: false);
+
+    // Widget buttom(
+    //   BuildContext context,
+    // ) {
+    //   return ThemeTestphone.isIos(context)
+    //       ? CupertinoButton(
+    //           color: ThemeColor.gold,
+    //           minSize: MDime.quarter * 360 - 30.h,
+    //           onPressed: () {
+    //             ControllerAuth auth =
+    //                 Provider.of<ControllerAuth>(context, listen: false);
+    //             auth.login(context);
+    //           },
+    //           child: Text(MLanguages.page2button.tr(),
+    //               style: ThemeTextStyle.tLarge(context)))
+    //       : ElevatedButton(
+    //           style: ButtonStyle(
+    //             minimumSize: MaterialStatePropertyAll(Size(
+    //                 (MDime.fullScreen * 310).w, MDime.quarter * 360 - 30.h)),
+    //             backgroundColor: MaterialStatePropertyAll(ThemeColor.gold),
+    //             foregroundColor: MaterialStatePropertyAll(
+    //               DarkLightTheme.isDark(context)
+    //                   ? ThemeColor.green
+    //                   : ThemeColor.red,
+    //             ),
+    //           ),
+    //           child: Text(MLanguages.login.tr(),
+    //                   style: ThemeTextStyle.tLarge(context))
+    //               .tr(),
+    //           onPressed: () {
+    //             ControllerAuth auth =
+    //                 Provider.of<ControllerAuth>(context, listen: false);
+    //             auth.login(context);
+    //           });
+    // }
 
     return Scaffold(
+      appBar: AppBar(),
       body: SingleChildScrollView(
           child: Padding(
-        padding: const EdgeInsets.only(top: 75.0).h,
+        padding: const EdgeInsets.only(top: 10.0).h,
         child: Center(
             child: Column(children: [
           Container(
@@ -63,68 +75,96 @@ class VLogin extends StatelessWidget {
                   ? ThemeColor.white
                   : ThemeColor.black,
             )),
-            child: Column(
-              children: [
-                MDime.l.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.only(right: 20.0).w,
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: Text(MLanguages.email.tr(),
-                        style: ThemeTextStyle.hSmall(context)?.copyWith(
-                          fontWeight: FontWeight.w600,
-                        )),
-                  ),
-                ),
-                WTextField(controller: emailController, hintText: MLogin.email),
-                MDime.l.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.only(right: 20.0).w,
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: Text(MLanguages.password.tr(),
-                        style: ThemeTextStyle.hSmall(context)?.copyWith(
-                          fontWeight: FontWeight.w600,
-                        )),
-                  ),
-                ),
-                WTextField(
-                    isPass: true, controller: passController, hintText: ""),
-                Padding(
-                  padding: const EdgeInsets.only(right: 10.0).w,
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        MLanguages.forgetPass.tr(),
-                        style: ThemeTextStyle.tMedium(context)
-                            ?.copyWith(color: ThemeColor.gold),
+            child: Form(
+              key: _keyForm,
+              child: Column(
+                children: [
+                  MDime.l.verticalSpace,
+                  const WidgetAuthEmail(),
+                  MDime.l.verticalSpace,
+                  const WidgetAuthPassword(),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0).w,
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, MRouteName.forgetPass);
+
+                          auth.resetAuth();
+                        },
+                        child: Text(
+                          MLanguages.forgetPass.tr(),
+                          style: ThemeTextStyle.tMedium(context)
+                              ?.copyWith(color: ThemeColor.gold),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                MDime.l.verticalSpace,
-                buttom(context),
-                MDime.md.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(MLanguages.dontHaveAccount.tr(),
-                        style: ThemeTextStyle.lLarge(context)),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, MRouteName.signup);
-                      },
-                      child: Text(
-                        MLanguages.signup.tr(),
-                        style: ThemeTextStyle.lLarge(context)
-                            ?.copyWith(color: ThemeColor.gold),
+                  MDime.l.verticalSpace,
+                  Consumer<ControllerAuth>(
+                    builder: (context, auth, child) {
+                      // button
+                      return 
+                         ElevatedButton(
+                              style: ButtonStyle(
+                                minimumSize: MaterialStatePropertyAll(Size(
+                                    (MDime.fullScreen * 310).w,
+                                    MDime.quarter * 360 - 30.h)),
+                                backgroundColor:
+                                    MaterialStatePropertyAll(ThemeColor.gold),
+                                foregroundColor: MaterialStatePropertyAll(
+                                  DarkLightTheme.isDark(context)
+                                      ? ThemeColor.green
+                                      : ThemeColor.red,
+                                ),
+                              ),
+                              child: Text(MLanguages.login.tr(),
+                                      style: ThemeTextStyle.tLarge(context))
+                                  .tr(),
+                              onPressed: () async {
+                                if (_keyForm.currentState?.validate() ??
+                                    false) {
+                                  // save data
+                                  _keyForm.currentState?.save();
+                                  if (!(await auth.login(context))) {
+                                    // show toast error massage
+                                    if (context.mounted) {
+                                      WidgetToast.buildToast(
+                                        msg: auth.errorMessage,
+                                        context: context,
+                                      );
+                                    }
+                                  }
+                                } else {
+                                  developer.log('validate');
+                                }
+                              },
+                            );
+                    },
+                  ),
+                  MDime.md.verticalSpace,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(MLanguages.dontHaveAccount.tr(),
+                          style: ThemeTextStyle.lLarge(context)),
+                      TextButton(
+                        onPressed: () {
+                          auth.resetAuth();
+
+                          Navigator.pushNamed(context, MRouteName.signup);
+                        },
+                        child: Text(
+                          MLanguages.signup.tr(),
+                          style: ThemeTextStyle.lLarge(context)
+                              ?.copyWith(color: ThemeColor.gold),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ])),

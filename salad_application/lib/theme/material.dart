@@ -15,7 +15,7 @@ class MaterialWidget extends StatelessWidget {
       locale: context.locale,
       theme: light,
       darkTheme: dark,
-      initialRoute: MRouteName.home,
+      initialRoute: MRouteName.initalPage,
       routes: MRouteName.route,
     );
   }

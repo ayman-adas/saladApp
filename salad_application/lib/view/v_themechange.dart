@@ -1,8 +1,8 @@
 part of '../import/import.dart';
 
 // ignore: must_be_immutable
-class VThemeChange extends StatelessWidget with ChangeNotifier {
-  VThemeChange({super.key});
+class VThemeChange extends StatelessWidget {
+  const VThemeChange({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +27,10 @@ class VThemeChange extends StatelessWidget with ChangeNotifier {
                 image: MSvge.helal,
                 data: MLanguages.dark,
                 onTap: () {
+                  DarkLightTheme changeTheme =
+                      Provider.of<DarkLightTheme>(context, listen: false);
                   if (!DarkLightTheme.isDark(context)) {
-                    AdaptiveTheme.of(context).setDark();
-                    notifyListeners();
+                    changeTheme.setDarkLight(context);
                   }
                 }),
           ),
@@ -40,9 +41,10 @@ class VThemeChange extends StatelessWidget with ChangeNotifier {
                 image: MSvge.shams,
                 data: MLanguages.light,
                 onTap: () {
+                  DarkLightTheme changeTheme =
+                      Provider.of<DarkLightTheme>(context, listen: false);
                   if (DarkLightTheme.isDark(context)) {
-                    AdaptiveTheme.of(context).setLight();
-                    notifyListeners();
+                    changeTheme.setDarkLight(context);
                   }
                 }),
           )

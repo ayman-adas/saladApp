@@ -1,6 +1,6 @@
 part of '../import/import.dart';
 
-class DarkLightTheme {
+class DarkLightTheme with ChangeNotifier {
   static ThemeData themeLight(BuildContext context) {
     return ThemeData.light(useMaterial3: true).copyWith(
         colorScheme: const ColorScheme.light(),
@@ -50,4 +50,10 @@ class DarkLightTheme {
   /// dark -> `white`
   static Brightness mainColor(BuildContext context) =>
       DarkLightTheme.isDark(context) ? Brightness.dark : Brightness.light;
+  void setDarkLight(BuildContext context) {
+    DarkLightTheme.isDark(context)
+        ? AdaptiveTheme.of(context).setLight()
+        : AdaptiveTheme.of(context).setDark();
+    notifyListeners();
+  }
 }
