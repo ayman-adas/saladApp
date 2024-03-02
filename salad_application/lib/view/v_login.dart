@@ -6,7 +6,9 @@ class VLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ControllerAuth auth = Provider.of<ControllerAuth>(context, listen: false);
+    ControllerAuth auth = Provider.of<ControllerAuth>(
+      context,
+    );
 
     // Widget buttom(
     //   BuildContext context,
@@ -47,17 +49,18 @@ class VLogin extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
           child: Padding(
-        padding: const EdgeInsets.only(top: 10.0).h,
+        padding: const EdgeInsets.only(top: MDime.sm).h,
         child: Center(
             child: Column(children: [
           Container(
-            color: ThemeColor.appbar,
+            color: ThemeColor.bluefateh,
             width: double.infinity,
-            height: MDime.quarter * 730.h,
+            height: MDime.quarter * 600.h,
             child: Container(
-                color: ThemeColor.appbar,
+                color: ThemeColor.bluefateh,
                 width: MDime.half * 200.w,
-                child: const Image(image: AssetImage('assets/icon.png'))),
+                child: const Image(
+                    image: NetworkImage(MSadalPictureListItem.image2))),
           ),
           MDime.sm.verticalSpace,
           Text(
@@ -65,7 +68,7 @@ class VLogin extends StatelessWidget {
             style: ThemeTextStyle.hLarge(context),
           ),
           Divider(color: ThemeColor.gold),
-          MDime.l.verticalSpace,
+          MDime.md.verticalSpace,
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
@@ -79,9 +82,9 @@ class VLogin extends StatelessWidget {
               key: _keyForm,
               child: Column(
                 children: [
-                  MDime.l.verticalSpace,
+                  MDime.md.verticalSpace,
                   const WidgetAuthEmail(),
-                  MDime.l.verticalSpace,
+                  MDime.md.verticalSpace,
                   const WidgetAuthPassword(),
                   Padding(
                     padding: const EdgeInsets.only(right: 10.0).w,
@@ -101,46 +104,45 @@ class VLogin extends StatelessWidget {
                       ),
                     ),
                   ),
-                  MDime.l.verticalSpace,
+                  MDime.md.verticalSpace,
                   Consumer<ControllerAuth>(
                     builder: (context, auth, child) {
                       // button
-                      return 
-                         ElevatedButton(
-                              style: ButtonStyle(
-                                minimumSize: MaterialStatePropertyAll(Size(
-                                    (MDime.fullScreen * 310).w,
-                                    MDime.quarter * 360 - 30.h)),
-                                backgroundColor:
-                                    MaterialStatePropertyAll(ThemeColor.gold),
-                                foregroundColor: MaterialStatePropertyAll(
-                                  DarkLightTheme.isDark(context)
-                                      ? ThemeColor.green
-                                      : ThemeColor.red,
-                                ),
-                              ),
-                              child: Text(MLanguages.login.tr(),
-                                      style: ThemeTextStyle.tLarge(context))
-                                  .tr(),
-                              onPressed: () async {
-                                if (_keyForm.currentState?.validate() ??
-                                    false) {
-                                  // save data
-                                  _keyForm.currentState?.save();
-                                  if (!(await auth.login(context))) {
-                                    // show toast error massage
-                                    if (context.mounted) {
-                                      WidgetToast.buildToast(
-                                        msg: auth.errorMessage,
-                                        context: context,
-                                      );
-                                    }
-                                  }
-                                } else {
-                                  developer.log('validate');
-                                }
-                              },
-                            );
+                      return ElevatedButton(
+                        style: ButtonStyle(
+                          minimumSize: MaterialStatePropertyAll(Size(
+                              (MDime.fullScreen * 310).w,
+                              MDime.quarter * 360 - 30.h)),
+                          backgroundColor:
+                              MaterialStatePropertyAll(ThemeColor.gold),
+                          foregroundColor: MaterialStatePropertyAll(
+                            DarkLightTheme.isDark(context)
+                                ? ThemeColor.green
+                                : ThemeColor.red,
+                          ),
+                        ),
+                        child: Text(MLanguages.login.tr(),
+                                style: ThemeTextStyle.tLarge(context))
+                            .tr(),
+                        onPressed: () async {
+                          if (_keyForm.currentState?.validate() ?? false) {
+                            // save data
+                            _keyForm.currentState?.save();
+                            if (!(await auth.login(context))) {
+                              // show toast error massage
+                              if (context.mounted) {
+                                WidgetToast.buildToast(
+                                  msg: auth.errorMessage,
+                                  context: context,
+                                );
+                              }
+                            }
+                          } else {
+                            developer.log('validate');
+                            Navigator.pop(context);
+                          }
+                        },
+                      );
                     },
                   ),
                   MDime.md.verticalSpace,
@@ -156,13 +158,33 @@ class VLogin extends StatelessWidget {
                           Navigator.pushNamed(context, MRouteName.signup);
                         },
                         child: Text(
-                          MLanguages.signup.tr(),
+                          MLanguages.register.tr(),
                           style: ThemeTextStyle.lLarge(context)
                               ?.copyWith(color: ThemeColor.gold),
                         ),
                       ),
                     ],
                   ),
+                  Center(
+                      child: Text(
+                    "---------- ${MLanguages.singinWith.tr()} ----------",
+                    style: ThemeTextStyle.bLarge(context)
+                        ?.copyWith(color: ThemeColor.red),
+                  )),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                          onPressed: () async {
+                            await auth.signInWithGoogle();
+                          },
+                          child: Image(
+                            height: (MDime.d1 * MDime.l).h,
+                            image: const NetworkImage(
+                                MSadalPictureListItem.google),
+                          )),
+                    ],
+                  )
                 ],
               ),
             ),

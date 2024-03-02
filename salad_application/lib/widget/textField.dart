@@ -45,72 +45,75 @@ class WidgetTextField extends StatelessWidget {
   final bool isShowIconPass;
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      // General
-      controller: controller,
-      // close keyboard when click outside text field
-      onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
-      cursorColor:
-          DarkLightTheme.isDark(context) ? ThemeColor.green : ThemeColor.red,
+    return SizedBox(
+      height: MDime.d6 * MDime.xxl,
+      child: TextFormField(
+        // General
+        controller: controller,
+        // close keyboard when click outside text field
+        onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+        cursorColor:
+            DarkLightTheme.isDark(context) ? ThemeColor.green : ThemeColor.red,
 
-      keyboardType: keyboardType,
-      initialValue: initialValue,
-      obscureText: isPass,
-      obscuringCharacter: '✤',
-      validator: validator,
-      onSaved: onSaved,
-      onChanged: onChanged,
-      minLines: minLines,
-      maxLines: maxLines,
-      // Decoration
-      decoration: InputDecoration(
-        border: InputBorder.none,
-        labelText: labelText?.tr(),
-        labelStyle: ThemeTextStyle.lLarge(context)
-            ?.copyWith(fontWeight: FontWeight.bold),
-        hintText: hintText?.tr(),
-        helperText: helperText?.tr(),
-        helperMaxLines: 2,
-        helperStyle: ThemeTextStyle.lLarge(context)
-            ?.copyWith(fontWeight: FontWeight.w200),
-        // icon
-        prefixIcon: Icon(iconBefore),
-        suffixIcon: isShowIconPass
-            ? Consumer<ControllerAuthSecurityPass>(
-                builder: (context, pSecurityPass, child) {
-                  return IconButton(
-                    onPressed: pSecurityPass.handelPass,
-                    icon: Icon(pSecurityPass.iconEye),
-                  );
-                },
-              )
-            : null,
+        keyboardType: keyboardType,
+        initialValue: initialValue,
+        obscureText: isPass,
+        obscuringCharacter: '✤',
+        validator: validator,
+        onSaved: onSaved,
+        onChanged: onChanged,
+        minLines: minLines,
+        maxLines: maxLines,
+        // Decoration
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          labelText: labelText?.tr(),
+          labelStyle: ThemeTextStyle.lLarge(context)
+              ?.copyWith(fontWeight: FontWeight.bold),
+          hintText: hintText?.tr(),
+          helperText: helperText?.tr(),
+          helperMaxLines: 2,
+          helperStyle: ThemeTextStyle.lLarge(context)
+              ?.copyWith(fontWeight: FontWeight.w200),
+          // icon
+          prefixIcon: Icon(iconBefore),
+          suffixIcon: isShowIconPass
+              ? Consumer<ControllerAuthSecurityPass>(
+                  builder: (context, pSecurityPass, child) {
+                    return IconButton(
+                      onPressed: pSecurityPass.handelPass,
+                      icon: Icon(pSecurityPass.iconEye),
+                    );
+                  },
+                )
+              : null,
 
-        // Border Style
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(MDime.l.w),
-          borderSide: BorderSide(
-            color: DarkLightTheme.isDark(context)
-                ? ThemeColor.white
-                : ThemeColor.black,
+          // Border Style
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(MDime.l.w),
+            borderSide: BorderSide(
+              color: DarkLightTheme.isDark(context)
+                  ? ThemeColor.white
+                  : ThemeColor.black,
+            ),
           ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(MDime.l.w),
-          borderSide:
-              BorderSide(color: focusedBorderColor ?? ThemeColor.deepOrange),
-        ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(MDime.l.w),
+            borderSide:
+                BorderSide(color: focusedBorderColor ?? ThemeColor.deepOrange),
+          ),
 
-        // error
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(MDime.l.w),
-          borderSide: BorderSide(color: ThemeColor.red),
+          // error
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(MDime.l.w),
+            borderSide: BorderSide(color: ThemeColor.red),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(MDime.l.w),
+            borderSide: BorderSide(color: ThemeColor.teal),
+          ),
+          errorMaxLines: 2,
         ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(MDime.l.w),
-          borderSide: BorderSide(color: ThemeColor.teal),
-        ),
-        errorMaxLines: 2,
       ),
     );
   }

@@ -8,7 +8,7 @@ class ViewRegister extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// [spaceVertical]  SizedBox 16 height
-    SizedBox spaceVertical = MDime.l.verticalSpace;
+    SizedBox spaceVertical = MDime.sm.verticalSpace;
     return PopScope(
       canPop: true,
       onPopInvoked: (didPop) {
@@ -38,7 +38,7 @@ class ViewRegister extends StatelessWidget {
                   const WidgetAuthImageUser(),
 
                   // space
-                  spaceVertical,
+                  MDime.l.verticalSpace,
 
                   // username
                   const WidgetAuthUsername(),
@@ -62,40 +62,41 @@ class ViewRegister extends StatelessWidget {
                   const WidgetAuthPassword(isConfirmPass: true),
 
                   // space
-                  spaceVertical,
+                  MDime.md.verticalSpace,
 
                   Consumer<ControllerAuth>(
                     builder: (context, auth, child) {
-                      return WidgetAuthBtn(
-                              title: MLanguages.signup.tr().substring(
-                                  0, MLanguages.signup.tr().length - 1),
-                              onTap: () async {
-                                if (_keyFormRegister.currentState?.validate() ??
-                                    false) {
-                                  // save data
-                                  _keyFormRegister.currentState?.save();
+                      return WidgetBtn(
+                        title: MLanguages.register
+                            .tr()
+                            .substring(0, MLanguages.register.tr().length - 1),
+                        onTap: () async {
+                          if (_keyFormRegister.currentState?.validate() ??
+                              false) {
+                            // save data
+                            _keyFormRegister.currentState?.save();
 
-                                  // register user
-                                  if (!(await auth.register(context))) {
-                                    // show toast error massage
-                                    if (context.mounted) {
-                                      WidgetToast.buildToast(
-                                        context: context,
-                                        msg: auth.errorMessage,
-                                        translation: false,
-                                      );
-                                    }
-                                  } else {
-                                    // ✅
-                                    if (context.mounted) {
-                                      // delete page register
-                                      // wrapper push to home
-                                      ThemeRestart.reDraw(context);
-                                    }
-                                  }
-                                }
-                              },
-                            );
+                            // register user
+                            if (!(await auth.register(context))) {
+                              // show toast error massage
+                              if (context.mounted) {
+                                WidgetToast.buildToast(
+                                  context: context,
+                                  msg: auth.errorMessage,
+                                  translation: false,
+                                );
+                              }
+                            } else {
+                              // ✅
+                              if (context.mounted) {
+                                // delete page register
+                                // wrapper push to home
+                                ThemeRestart.reDraw(context);
+                              }
+                            }
+                          }
+                        },
+                      );
                     },
                   ),
                   // button
@@ -111,6 +112,28 @@ class ViewRegister extends StatelessWidget {
                         image.resetImage();
                         Navigator.pop(context);
                       },
+                    );
+                  }),
+                  Center(
+                      child: Text(
+                    "---------- ${MLanguages.signupwith.tr()} ----------",
+                    style: ThemeTextStyle.bLarge(context)
+                        ?.copyWith(color: ThemeColor.red),
+                  )),
+                  Consumer<ControllerAuth>(builder: (context, auth, child) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                            onPressed: () {
+                              auth.signInWithGoogle();
+                            },
+                            child: Image(
+                              height: (MDime.d1 * MDime.l).h,
+                              image: const NetworkImage(
+                                  MSadalPictureListItem.google),
+                            ))
+                      ],
                     );
                   }),
                 ],

@@ -18,11 +18,14 @@ class TFirebase extends StatelessWidget {
             if (snapshot.hasData) {
               return const Wrapper();
             } else {
-              return CErrorMassage(massage: MLanguages.nodata, callback: () {});
+              return const CErrorMassage(
+                massage: MLanguages.nodata,
+              );
             }
           } else {
-            return CErrorMassage(
-                massage: MLanguages.noconnect, callback: () {});
+            return const CErrorMassage(
+              massage: MLanguages.noconnect,
+            );
           }
         },
       ),

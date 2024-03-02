@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -12,6 +13,7 @@ void main() async {
     // remove splash
     FlutterNativeSplash.remove();
   });
+  FirebaseMessaging.onBackgroundMessage(CNotificationMasage.firebasemassaging);
   runApp(
     EasyLocalization(
         supportedLocales: const [Locale('en'), Locale('ar')],
@@ -19,12 +21,14 @@ void main() async {
             'assets/translations', // <-- change the path of the translation files
         fallbackLocale: const Locale('en'),
         child: MultiProvider(providers: [
-          ChangeNotifierProvider(create: (_) => CPacketList()),
           ChangeNotifierProvider(create: (_) => MPage3()),
           ChangeNotifierProvider(create: (_) => ControllerImage()),
           ChangeNotifierProvider(create: (_) => ControllerAuth()),
           ChangeNotifierProvider(create: (_) => DarkLightTheme()),
           ChangeNotifierProvider(create: (_) => ControllerAuthSecurityPass()),
+          ChangeNotifierProvider(create: (_) => CFruitsalad()),
+          ChangeNotifierProvider(create: (_) => CAssisitance()),
+          ChangeNotifierProvider(create: (_) => CDatabase()),
         ], child: const ThemeInitilPage())),
   );
 }

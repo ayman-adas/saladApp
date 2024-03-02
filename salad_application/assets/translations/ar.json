@@ -31,7 +31,11 @@
       "grabes":"  سلطة فواكه عنب",
       "signOut":"تسجيل الخروج",
       "signOutMsg":"هل ترغب في تسجيل الخروج؟",
-
+      "quantityInsertSucssess":"تم اضافة السلطة الى السلة",
+      "quantityFailed":"فشل العملية",
+      "quantityUpdateSucssess":"تم تعديل على السلطة",
+      "quantitydeleteSucssess":"تم حذف السلطة من السلة",
+      "pasketEmpty":"السلة فارغة",
       "account"  :"حساب المستخدم",
       "packet":"السلة",
       "lang":"اللغة",
@@ -74,8 +78,19 @@
       "passError":"الباسورد يجب ان يتكون على الاقل 6 مدخلات وتتكون من احرف وارقام",
       "forgetBar":"لقد أرسلنا رسالة  عبر بريدك الإلكتروني، قم بتحقق .\nإذا لم تتلق رسالة إعادة المحاولة،",
       "haveAccount":"لديك حساب؟",
-      "resetPass":"اعادة كلمة المرور"
-      
- 
+      "resetPass":"اعادة كلمة المرور",
+      "questionAnswer":"اجابة الاسئلة",
+      "saladUpload":"ادخال السلطة",
+      "saladNameArarbic":"اسم السلطة في العربي",
+      "saladNameEnglish":"اسم السلطة في الانجليزي",
+      "salary":"السعر",
+      "complete":"تم بنجاح",
+      "desc":"الوصف",
+      "proplemName":"اسم المشكلة",
+      "singinWith":"تسجيل الدخول عن طريق",
+      "signupwith":"سجل عن طريق",
+      "search": "بحث .."
+
+
 
    }

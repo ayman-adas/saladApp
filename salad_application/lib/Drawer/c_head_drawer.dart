@@ -27,18 +27,14 @@ class CDrawerHead extends StatelessWidget {
                 backgroundImage: NetworkImage(auth.userPhoto),
                 radius: 50.0),
           ),
-          MDime.base.verticalSpace,
+
+          MDime.sm.verticalSpace,
           //username
+
           Text(
             auth.userName,
             style: ThemeTextStyle.bLarge(context),
           ),
-          MDime.base.verticalSpace,
-          //email
-          Text(
-            auth.userEmail,
-            style: ThemeTextStyle.bLarge(context),
-          )
         ],
       ),
     );

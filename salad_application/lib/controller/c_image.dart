@@ -38,11 +38,15 @@ class ControllerImage extends ChangeNotifier {
   /// [getImageUser] check user image have or not
   /// image picker return File
   /// is not return Network image default
-  ImageProvider getImageUser() {
+  ImageProvider getImageUser(bool isAuth) {
     if (image != null) {
       return FileImage(File(image!.path));
     } else {
-      return const NetworkImage(MSadalPictureListItem.userImage);
+      if (isAuth) {
+        return const NetworkImage(MSadalPictureListItem.userImage);
+      } else {
+        return const NetworkImage(MSadalPictureListItem.empty);
+      }
     }
   }
 

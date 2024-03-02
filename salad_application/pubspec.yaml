@@ -66,22 +66,29 @@ dependencies:
   form_builder_validators: ^9.1.0
   fluttertoast: ^8.2.4
   toast: ^0.3.0
+  flutter_translate: ^4.0.4
+  uuid: ^4.3.3
+  sqflite: ^2.3.2
+  path_provider: ^2.1.2
+  flutter_facebook_auth: ^6.1.1
+  google_sign_in: ^6.2.1
+  firebase_messaging: ^14.7.17
 flutter_native_splash:
  
   web: false
   ios: true
   android: true
 
-  color: "#FFC800"
+  color: "#0570F8"
   image: assets/native_splach.jpg
-  color_dark: "#FFC800"
+  color_dark: "#0570F8"
   image_dark: assets/native_splach.jpg
 
   android_12:
     image: assets/native_splach.jpg
-    icon_background_color: "#FFC800"
+    icon_background_color: "#0570F8"
     image_dark: assets/native_splach.jpg
-    icon_background_color_dark: "#FFC800"
+    icon_background_color_dark: "#0570F8"
 
 dev_dependencies:
   flutter_test:
@@ -126,6 +133,13 @@ flutter:
     - assets/icon.png
     - assets/icon_lancher.jpg
     - assets/native_splach.jpg
+    - assets/adv1jpeg.jpeg
+    - assets/adv2jpeg.jpeg
+    - assets/adv3jpeg.jpeg
+    - assets/adv4jpeg.jpeg
+    - assets/adv5jpeg.jpeg
+    - assets/adv6jpeg.jpeg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

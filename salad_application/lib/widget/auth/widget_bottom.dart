@@ -1,7 +1,7 @@
 part of './../../import/import.dart';
 
-class WidgetAuthBtn extends StatelessWidget {
-  const WidgetAuthBtn({super.key, required this.onTap, required this.title});
+class WidgetBtn extends StatelessWidget {
+  const WidgetBtn({super.key, required this.onTap, required this.title});
   final void Function()? onTap;
   final String title;
   @override

@@ -10,7 +10,7 @@ class ViewForgotPass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// [spaceVertical]  SizedBox 16 height
-    SizedBox spaceVertical = (MDime.l + MDime.md).verticalSpace;
+    SizedBox spaceVertical = (MDime.md).verticalSpace;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ThemeColor.appbar,
@@ -48,30 +48,27 @@ class ViewForgotPass extends StatelessWidget {
 
                 Consumer<ControllerAuth>(
                   builder: (context, auth, child) {
-                    return WidgetAuthBtn(
-                            title: MLanguages.resetPass.tr(),
-                            onTap: () async {
-                              if (_keyFormForgot.currentState?.validate() ??
-                                  false) {
-                                // save email
-                                _keyFormForgot.currentState?.save();
-                                await auth.resetPass();
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(MLanguages.forgetBar.tr(),
-                                        style: const TextStyle(
-                                            color: Colors.white)),
-                                    backgroundColor:
-                                        DarkLightTheme.isDark(context)
-                                            ? ThemeColor.green
-                                            : ThemeColor.red,
-                                  ),
-                                );
-                              } else {
-                                developer.log('validate');
-                              }
-                            },
+                    return WidgetBtn(
+                      title: MLanguages.resetPass.tr(),
+                      onTap: () async {
+                        if (_keyFormForgot.currentState?.validate() ?? false) {
+                          // save email
+                          _keyFormForgot.currentState?.save();
+                          await auth.resetPass();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(MLanguages.forgetBar.tr(),
+                                  style: const TextStyle(color: Colors.white)),
+                              backgroundColor: DarkLightTheme.isDark(context)
+                                  ? ThemeColor.green
+                                  : ThemeColor.red,
+                            ),
                           );
+                        } else {
+                          developer.log('validate');
+                        }
+                      },
+                    );
                   },
                 ),
                 // button

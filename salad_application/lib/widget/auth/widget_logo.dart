@@ -9,7 +9,7 @@ class WidgetAuthLogo extends StatelessWidget {
       child: Image(
         width: MDime.xxxxl.w,
         height: MDime.xxxxl.w,
-        image: const AssetImage("assets/icon.png"),
+        image: const NetworkImage(MSadalPictureListItem.image2),
       ),
     );
   }

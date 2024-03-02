@@ -8,29 +8,29 @@ class VPacket extends StatefulWidget {
 }
 
 Text show() {
-  if (sailAll == 0) {
+  if (CDatabase.sailAll == 0) {
     return const Text("");
   }
-  return Text("${MLanguages.totalSails.tr()} ${sailAll}JD",
+  return Text("${MLanguages.totalSails.tr()} ${CDatabase.sailAll}JD",
       style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w400));
-}
-
-List list() {
-  List temp = [];
-  int index = 0;
-  for (int i = 0; i < CPacketList.list.length; i++) {
-    if (CPacketList.list[i].counter > 0) {
-      temp.insert(index, CPacketList.list[i]);
-      index++;
-    }
-  }
-  return temp;
 }
 
 class _VPacketState extends State<VPacket> {
   @override
+  void initState() {
+    super.initState();
+    CDatabase controllerFruit = Provider.of<CDatabase>(context, listen: false);
+    controllerFruit.selectitems();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    List listview = list();
+    bool isEnglish(BuildContext context) =>
+        context.locale.languageCode == 'en' ? true : false;
+    CDatabase controllerFruit = Provider.of<CDatabase>(
+      context,
+    );
+
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -46,9 +46,9 @@ class _VPacketState extends State<VPacket> {
                       padding: const EdgeInsets.all(8),
                       physics: const BouncingScrollPhysics(
                           parent: AlwaysScrollableScrollPhysics()),
-                      itemCount: listview.length,
+                      itemCount: CDatabase.pasketList.length,
                       itemBuilder: (BuildContext context, int index) {
-                        if (index < 0 || index >= listview.length) {
+                        if (index < 0 || index >= CDatabase.pasketList.length) {
                           return null;
                         }
                         return AnimationConfiguration.staggeredList(
@@ -67,14 +67,18 @@ class _VPacketState extends State<VPacket> {
                                             MaterialPageRoute(builder:
                                                 (BuildContext context) {
                                           return VQuantity(
-                                            index: listview[index].index,
-                                            data: listview[index].data,
-                                            url: listview[index].url,
-                                            sail: (listview[index].sail /
-                                                    listview[index].counter)
-                                                .round(),
-                                            counter: listview[index].counter,
-                                            counter2: listview[index].counter,
+                                            salad: (controllerFruit
+                                                    .convertTofruitSalad(
+                                                        (CDatabase.pasketList[
+                                                            index])) ??
+                                                MFruitSalad()),
+                                            counter: CDatabase.pasketList[index]
+                                                    .counter ??
+                                                0,
+                                            counter2: CDatabase
+                                                    .pasketList[index]
+                                                    .counter ??
+                                                0,
                                           );
                                         }));
                                         setState(() {});
@@ -82,17 +86,41 @@ class _VPacketState extends State<VPacket> {
                                       child: Expanded(
                                         child: Row(
                                           children: [
-                                            listview[index],
+                                            WPacketSalad(
+                                                url: CDatabase.pasketList[index]
+                                                        .image ??
+                                                    '',
+                                                data: (isEnglish(context)
+                                                        ? CDatabase
+                                                            .pasketList[index]
+                                                            .englishName
+                                                        : CDatabase
+                                                            .pasketList[index]
+                                                            .arabicName) ??
+                                                    '',
+                                                sail: (CDatabase
+                                                            .pasketList[index]
+                                                            .sail ??
+                                                        0) *
+                                                    (CDatabase.pasketList[index]
+                                                            .counter ??
+                                                        0),
+                                                counter: CDatabase
+                                                        .pasketList[index]
+                                                        .counter ??
+                                                    0,
+                                                index: index),
+                                            ((MDime.l) + (MDime.l))
+                                                .horizontalSpace,
                                             Flexible(
                                               child: Align(
                                                 alignment:
                                                     Alignment.centerRight,
                                                 child: ElevatedButton(
                                                   onPressed: () {
-                                                    sailAll -=
-                                                        listview[index].sail;
-                                                    listview[index].counter = 0;
-                                                    setState(() {});
+                                                    controllerFruit.deleteItem(
+                                                        CDatabase
+                                                            .pasketList[index]);
                                                   },
                                                   style: ButtonStyle(
                                                       fixedSize:

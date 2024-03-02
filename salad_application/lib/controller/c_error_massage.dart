@@ -1,10 +1,11 @@
 part of '../import/import.dart';
 
 class CErrorMassage extends StatelessWidget {
-  const CErrorMassage(
-      {super.key, required this.massage, required this.callback});
+  const CErrorMassage({
+    super.key,
+    required this.massage,
+  });
   final String massage;
-  final Function() callback;
   @override
   Widget build(BuildContext context) {
     //alert for error masseges
@@ -18,7 +19,7 @@ class CErrorMassage extends StatelessWidget {
                   ? ThemeColor.green
                   : ThemeColor.red,
             )),
-        onPressed: callback,
+        onPressed: () {},
         child: const Text(MLanguages.ok).tr(),
       ),
     ]);

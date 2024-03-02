@@ -22,6 +22,7 @@ class MIcons {
   static const IconData langOutlined = Icons.language_outlined;
 //facebook
   static const IconData facebook = Icons.facebook_outlined;
+
   //call
   static const IconData call = Icons.call_outlined;
 
@@ -74,4 +75,12 @@ class MIcons {
   //question mark
   static const IconData question = Icons.question_mark_outlined;
   static const IconData questioncurp = CupertinoIcons.question_circle;
+  //pencil
+  static const IconData pencil = CupertinoIcons.pencil_circle;
+  //question answer
+  static const IconData questionAnswer = Icons.question_answer;
+  //for data enter
+  static const IconData dataUsage = Icons.data_usage;
+  static const IconData description = Icons.description;
+  static const IconData proplem = CupertinoIcons.projective;
 }

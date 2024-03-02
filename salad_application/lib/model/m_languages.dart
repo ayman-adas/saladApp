@@ -54,7 +54,7 @@ class MLanguages {
   static const String light = "light";
   static const String dark = "dark";
   static const String login = "login";
-  static const String signup = "signup";
+  static const String register = "signup";
   static const String password = "password";
   static const String email = "email";
   static const String noconnect = "noconnect";
@@ -77,4 +77,24 @@ class MLanguages {
   static const String signOutMsg = "signOutMsg";
   static const String haveAccount = "haveAccount";
   static const String resetPass = "resetPass";
+  static const String questionAnswer = "questionAnswer";
+  static const String saladUpload = "saladUpload";
+  static const String salary = "salary";
+  static const String complete = "complete";
+
+  static const String saladNameArarbic = "saladNameArarbic";
+
+  static const String saladNameEnglish = "saladNameEnglish";
+  static const String image = "image";
+  static const String id = "id";
+  static const String desc = "desc";
+  static const String proplemName = "proplemName";
+  static const String quantityInsertSucssess = "quantityInsertSucssess";
+  static const String quantityFailed = "quantityFailed";
+  static const String quantityUpdateSucssess = "quantityUpdateSucssess";
+  static const String quantitydeleteSucssess = "quantitydeleteSucssess";
+  static const String pasketEmpty = "pasketEmpty";
+  static const String singinWith = "singinWith";
+  static const String signupwith = "signupwith";
+  static const String search = "search";
 }

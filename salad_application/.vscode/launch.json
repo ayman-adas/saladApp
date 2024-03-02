@@ -9,7 +9,7 @@
             "name": "salad_application",
             "request": "launch",
             "type": "dart",
-            "program": "lib/widget/main.dart"
+            "program": "lib/main.dart"
 
         },
         {

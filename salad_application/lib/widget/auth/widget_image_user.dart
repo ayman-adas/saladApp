@@ -26,20 +26,20 @@ class WidgetAuthImageUser extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.transparent,
               shape: BoxShape.circle,
-              border:
-                  Border.all(color: ThemeColor.redAccent, width: MDime.xs.w),
+              border: Border.all(
+                  color: DarkLightTheme.isDark(context)
+                      ? ThemeColor.green
+                      : ThemeColor.red,
+                  width: MDime.xs.w),
               image: DecorationImage(
-                  image: controllerImage.getImageUser(), fit: BoxFit.fill),
+                  image: controllerImage.getImageUser(true), fit: BoxFit.fill),
             ),
           ),
           PositionedDirectional(
             bottom: 0,
             end: 5,
-            child: Icon(
-              CupertinoIcons.pencil_circle_fill,
-              size: MDime.xl.w,
-              color: ThemeColor.red,
-            ),
+            child:
+                Icon(MIcons.pencil, size: MDime.xl.w, color: ThemeColor.teal),
           )
         ],
       ),

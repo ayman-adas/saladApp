@@ -4,18 +4,12 @@ part of '../import/import.dart';
 class VQuantity extends StatefulWidget {
   VQuantity(
       {super.key,
-      required this.index,
-      required this.data,
-      required this.sail,
-      required this.url,
+      required this.salad,
       required this.counter,
       required this.counter2});
-  final String data;
-  final int sail;
-  final String url;
+  final MFruitSalad salad;
   int counter;
-  final int index;
-  late final int counter2;
+  int counter2;
   @override
   State<VQuantity> createState() => _VQuantityState();
 }
@@ -23,8 +17,9 @@ class VQuantity extends StatefulWidget {
 class _VQuantityState extends State<VQuantity> {
   @override
   Widget build(BuildContext context) {
-    CPacketList packetProvider = Provider.of<CPacketList>(context);
-    CPacketList page3Provider = Provider.of<CPacketList>(context);
+    CDatabase packetProvider = Provider.of<CDatabase>(context);
+    bool isEnglish(BuildContext context) =>
+        context.locale.languageCode == 'en' ? true : false;
 
     IconData icon(BuildContext context) {
       return ThemeTestphone.isIos(context)
@@ -40,17 +35,9 @@ class _VQuantityState extends State<VQuantity> {
               minSize: MDime.d1.h * 30,
               color: ThemeColor.gold,
               onPressed: () {
-                if (widget.counter < widget.counter2) {
-                  sailAll -=
-                      widget.sail * ((widget.counter - widget.counter2).abs());
-                } else {
-                  sailAll += widget.sail * ((widget.counter - widget.counter2));
-                }
-                packetProvider.changeCounter(widget.index, widget.counter);
-                page3Provider.changeCounter(widget.index, widget.counter);
-                packetProvider.changeSail(
-                    widget.index, widget.sail * widget.counter);
-                setState(() {});
+                packetProvider.createpasketAndUpdate(packetProvider
+                    .convertToPasket(widget.salad, widget.counter));
+
                 Navigator.pop(context);
 
 // Find the ScaffoldMessenger in the widget tree
@@ -64,7 +51,9 @@ class _VQuantityState extends State<VQuantity> {
                         : ThemeColor.red,
                   ),
                 );
-                Navigator.pushNamed(context, MRouteName.page3);
+                Navigator.pop(
+                  context,
+                );
               },
               child: Text(MLanguages.quantitybutton.tr(),
                   style: ThemeTextStyle.tLarge(context)))
@@ -77,30 +66,10 @@ class _VQuantityState extends State<VQuantity> {
                       style: ThemeTextStyle.tLarge(context))
                   .tr(),
               onPressed: () {
-                if (widget.counter < widget.counter2) {
-                  sailAll -=
-                      widget.sail * ((widget.counter - widget.counter2).abs());
-                } else {
-                  sailAll += widget.sail * ((widget.counter - widget.counter2));
-                }
-                packetProvider.changeCounter(widget.index, widget.counter);
-                page3Provider.changeCounter(widget.index, widget.counter);
-                packetProvider.changeSail(
-                    widget.index, widget.sail * widget.counter);
-                setState(() {});
+                packetProvider.createpasketAndUpdate(packetProvider
+                    .convertToPasket(widget.salad, widget.counter));
 
-// Find the ScaffoldMessenger in the widget tree
-// and use it to show a SnackBar.
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(MLanguages.quantitySnackBar.tr(),
-                        style: const TextStyle(color: Colors.white)),
-                    backgroundColor: DarkLightTheme.isDark(context)
-                        ? ThemeColor.green
-                        : ThemeColor.red,
-                  ),
-                );
-                Navigator.pushNamed(context, MRouteName.page3);
+                Navigator.pop(context);
               });
     }
 
@@ -120,12 +89,15 @@ class _VQuantityState extends State<VQuantity> {
               SizedBox(
                 height: MDime.half * 690.h,
                 child: Image.network(
-                  widget.url,
+                  widget.salad.getImageUrl,
                   height: MDime.half.h,
                 ),
               ),
               Center(
-                child: Text(widget.data.tr(),
+                child: Text(
+                    isEnglish(context)
+                        ? widget.salad.getEnglishName
+                        : widget.salad._arabicName,
                     style: ThemeTextStyle.hSmall(context)),
               ),
               Container(
@@ -173,14 +145,14 @@ class _VQuantityState extends State<VQuantity> {
                       padding: const EdgeInsets.only(left: 50).w,
                       child: const Icon(Icons.money_rounded),
                     ),
-                    Text("${widget.sail * widget.counter}JD")
+                    Text("${(widget.salad.getsalary) * widget.counter}JD")
                   ],
                 ),
               ),
               Container(
                 padding: const EdgeInsets.fromLTRB(30, 10, 25, 0).w,
                 child: Text(
-                        " ${MLanguages.quantitydesc1.tr()}\n${widget.data} ${MLanguages.quantitydesc2.tr()}",
+                        " ${MLanguages.quantitydesc1.tr()}\n${isEnglish(context) ? widget.salad.getEnglishName : widget.salad._arabicName} ${MLanguages.quantitydesc2.tr()}",
                         style: ThemeTextStyle.tMedium(context))
                     .tr(),
               ),

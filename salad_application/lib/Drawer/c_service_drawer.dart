@@ -1,3 +1,5 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 part of '../import/import.dart';
 
 class CDraerrServer extends StatelessWidget {
@@ -5,6 +7,9 @@ class CDraerrServer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ControllerAuth auth = Provider.of<ControllerAuth>(context, listen: false);
+// to check if is admin or not
+    bool isadmin = auth.userEmail == 'aymanhaniadas28@gmail.com';
     return Padding(
       padding: const EdgeInsets.all(MDime.l),
       child: SingleChildScrollView(
@@ -12,10 +17,12 @@ class CDraerrServer extends StatelessWidget {
           children: [
             //bottom for search
             CServiceTabs(
-                icon: MIcons.searchOutlined,
-                title: MLanguages.searchLabel,
-                onTap: () =>
-                    showSearch(context: context, delegate: WSearch.searcch)),
+              icon: MIcons.searchOutlined,
+              title: MLanguages.searchLabel,
+              onTap: () {
+                Navigator.pushNamed(context, MRouteName.search);
+              },
+            ),
             //bottom for packet
             CServiceTabs(
                 icon: MIcons.shoppingOutlined,
@@ -47,6 +54,27 @@ class CDraerrServer extends StatelessWidget {
                 Navigator.pushNamed(context, MRouteName.assistance);
               },
             ),
+            Visibility(
+              visible: isadmin,
+              child: CServiceTabs(
+                icon: MIcons.questionAnswer,
+                title: MLanguages.questionAnswer,
+                onTap: () {
+                  Navigator.pushNamed(context, MRouteName.assistance);
+                },
+              ),
+            ),
+            Visibility(
+              visible: isadmin,
+              child: CServiceTabs(
+                icon: Icons.data_usage,
+                title: MLanguages.saladUpload,
+                onTap: () {
+                  Navigator.pushNamed(context, MRouteName.saladUpload);
+                },
+              ),
+            ),
+
             //bottom for about us
             CServiceTabs(
               icon: MIcons.aboutOutlined,

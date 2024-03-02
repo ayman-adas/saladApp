@@ -13,12 +13,14 @@ class MRouteName {
   static const String about = "about";
   static const String assistance = "assistance";
   static const String forgetPass = "forgetPass";
+  static const String search = "search";
 
   static const String signout = "signout";
   static const String themeChange = "themeChange";
   static const String langhange = "langChange";
   static const String initalPage = "initPage";
-
+  static const String saladUpload = "saladUpload";
+// ViewSearch
   static Map<String, WidgetBuilder> route = {
     home: (context) => const VHome(),
     initalPage: (context) => const TFirebase(),
@@ -38,5 +40,8 @@ class MRouteName {
           title: Text(MLanguages.signOut.tr()),
           content: Text(MLanguages.signOutMsg.tr()),
         ),
+    saladUpload: (context) => const ViewDataInsertion(),
+    search: (context) => ViewSearch()
   };
 }
+// VQuestionAnswer

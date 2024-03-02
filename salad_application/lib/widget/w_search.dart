@@ -2,23 +2,32 @@ part of './../import/import.dart';
 
 @override
 class WSearch {
-  static SearchPage<WSaladButton> searcch = SearchPage<WSaladButton>(
-      searchStyle: const TextStyle(),
-      items: MPage3.list,
-      searchLabel: MLanguages.searchLabel.tr(),
-      suggestion: Center(
-        child: const Text(MLanguages.suggestion).tr(),
-      ),
-      failure: Center(
-        child: const Text(MLanguages.failure).tr(),
-      ),
-      filter: (WSaladButton salad) => [
-            salad.data,
-          ],
-      builder: (
-        WSaladButton salad,
-      ) =>
-          ListTile(
-            title: salad,
-          ));
+  static Future<SearchPage<MFruitSalad>> searchPage(
+      BuildContext context) async {
+    CFruitsalad packetProvider =
+        Provider.of<CFruitsalad>(context, listen: false);
+    List<List<MFruitSalad>> list = await packetProvider.getAllsalad.toList();
+    SearchPage<MFruitSalad> searcch = SearchPage<MFruitSalad>(
+        searchStyle: const TextStyle(),
+        items: list.first,
+        searchLabel: MLanguages.searchLabel.tr(),
+        suggestion: Center(
+          child: const Text(MLanguages.suggestion).tr(),
+        ),
+        failure: Center(
+          child: const Text(MLanguages.failure).tr(),
+        ),
+        filter: (MFruitSalad salad) => [
+              salad._arabicName,
+            ],
+        builder: (
+          MFruitSalad salad,
+        ) =>
+            ListTile(
+                title: WSaladButton(
+              salad: salad,
+              counter: 0,
+            )));
+    return searcch;
+  }
 }

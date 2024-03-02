@@ -1,17 +1,29 @@
 part of '../import/import.dart';
 
-class VPage1 extends StatelessWidget {
+class VPage1 extends StatefulWidget {
   const VPage1({super.key});
+
+  @override
+  State<VPage1> createState() => _VPage1State();
+}
+
+class _VPage1State extends State<VPage1> {
+  @override
+  void initState() {
+    super.initState();
+
+    CNotificationMasage.requestMassaging();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
         width: MDime.fullScreen * 360.w,
-        height: MDime.fullScreen * 690.h,
+        height: MDime.fullScreen * 700.h,
         child: Column(children: [
           Container(
-            height: MDime.half * 690.h,
-            color: const Color.fromARGB(255, 255, 200, 0),
+            height: MDime.half * 700.h,
+            color: ThemeColor.bluefateh,
             child: Image.asset(
               "assets/page1.png",
               height: (MDime.half * 690 - 100).h,
