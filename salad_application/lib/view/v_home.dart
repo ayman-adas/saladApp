@@ -19,7 +19,7 @@ class _VHomeState extends State<VHome> {
     return Scaffold(
         body: OnBoardingSlider(
       controllerColor: ThemeColor.gold,
-      headerBackgroundColor: const Color.fromARGB(255, 255, 200, 0),
+      headerBackgroundColor: ThemeColor.bluefateh,
       skipIcon: Icon(
         icon(context),
         color:

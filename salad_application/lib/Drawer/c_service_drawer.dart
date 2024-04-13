@@ -7,10 +7,12 @@ class CDraerrServer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //provider
     ControllerAuth auth = Provider.of<ControllerAuth>(context, listen: false);
 // to check if is admin or not
     bool isadmin = auth.userEmail == 'aymanhaniadas28@gmail.com';
     return Padding(
+      //padding
       padding: const EdgeInsets.all(MDime.l),
       child: SingleChildScrollView(
         child: Column(
@@ -54,16 +56,18 @@ class CDraerrServer extends StatelessWidget {
                 Navigator.pushNamed(context, MRouteName.assistance);
               },
             ),
+            //bottom for question answer
             Visibility(
               visible: isadmin,
               child: CServiceTabs(
                 icon: MIcons.questionAnswer,
                 title: MLanguages.questionAnswer,
                 onTap: () {
-                  Navigator.pushNamed(context, MRouteName.assistance);
+                  Navigator.pushNamed(context, MRouteName.questionAnswer);
                 },
               ),
             ),
+            //bottom for salad upload
             Visibility(
               visible: isadmin,
               child: CServiceTabs(

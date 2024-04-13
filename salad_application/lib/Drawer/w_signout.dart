@@ -26,13 +26,16 @@ class WSignout extends StatelessWidget {
 
     ///alert dialog adaptive for uoour phone
     return AlertDialog.adaptive(
+      //title
       title: title,
       content: content,
       actions: [
+        //for cancel
         buttom(context, MLanguages.cancel.tr(), () {
           Navigator.pop(context);
         }),
         buttom(context, MLanguages.ok.tr(), () {
+          //when ok
           ControllerAuth auth =
               Provider.of<ControllerAuth>(context, listen: false);
           auth.signOut();

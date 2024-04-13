@@ -5,6 +5,7 @@ part of '../import/import.dart';
 class WidgetTextField extends StatelessWidget {
   const WidgetTextField({
     super.key,
+    this.width=double.infinity,
     // General
     this.controller,
     this.keyboardType,
@@ -43,10 +44,12 @@ class WidgetTextField extends StatelessWidget {
   final String? helperText;
   final IconData? iconBefore;
   final bool isShowIconPass;
+  final double width;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: MDime.d6 * MDime.xxl,
+      width: width,
       child: TextFormField(
         // General
         controller: controller,

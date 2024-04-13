@@ -21,14 +21,16 @@ void main() async {
             'assets/translations', // <-- change the path of the translation files
         fallbackLocale: const Locale('en'),
         child: MultiProvider(providers: [
-          ChangeNotifierProvider(create: (_) => MPage3()),
+          ChangeNotifierProvider(create: (_) => MSaladPage()),
           ChangeNotifierProvider(create: (_) => ControllerImage()),
           ChangeNotifierProvider(create: (_) => ControllerAuth()),
           ChangeNotifierProvider(create: (_) => DarkLightTheme()),
           ChangeNotifierProvider(create: (_) => ControllerAuthSecurityPass()),
           ChangeNotifierProvider(create: (_) => CFruitsalad()),
           ChangeNotifierProvider(create: (_) => CAssisitance()),
+          ChangeNotifierProvider(create: (_) => CPasket()),
           ChangeNotifierProvider(create: (_) => CDatabase()),
         ], child: const ThemeInitilPage())),
   );
 }
+// CPasket

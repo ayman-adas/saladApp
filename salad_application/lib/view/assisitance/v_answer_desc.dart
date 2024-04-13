@@ -14,26 +14,17 @@ class VAnswerDesc extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    IconData icon(BuildContext context) {
-      return ThemeTestphone.isIos(context)
-          ? MIcons.arrowbaccurp
-          : MIcons.arrowbac;
-    }
-
     return Scaffold(
+        //appbar
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(icon(context)),
-            onPressed: () => Navigator.pop(
-              context,
-            ),
-          ),
+          backgroundColor: ThemeColor.appbar,
         ),
         body: SizedBox(
             width: MDime.fullScreen * 690.w,
             height: MDime.fullScreen * 690.h,
             child: Column(children: [
               SizedBox(
+                //image
                 height: MDime.half * 690.h,
                 child: Image(
                   image: NetworkImage(
@@ -45,16 +36,18 @@ class VAnswerDesc extends StatelessWidget {
               ),
               MDime.l.verticalSpace,
               Center(
+                //data
                 child: Text(data.tr(), style: ThemeTextStyle.hSmall(context)),
               ),
               MDime.l.verticalSpace,
               Divider(
                 color: DarkLightTheme.isDark(context)
-                    ? ThemeColor.green
+                    ? ThemeColor.grey
                     : ThemeColor.red,
               ),
               MDime.l.verticalSpace,
               Container(
+                //desc
                 padding: const EdgeInsets.fromLTRB(30, 10, 25, 0).w,
                 child: Text(desc, style: ThemeTextStyle.tMedium(context)).tr(),
               ),

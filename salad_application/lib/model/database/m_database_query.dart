@@ -68,6 +68,22 @@ class MDatabaseQuery {
       return -1;
     });
   }
+   /// [deleteAllSalad] delete salad by salad!._id and return number row deleted
+  ///
+  /// when return -1 error delete salad
+  Future<int> deleteAllSalad( ) async {
+    return haveDB
+        .then(
+      (dbConnection) => dbConnection.delete(
+        MDatabaseHeaders.tablename,
+      ),
+    )
+        .onError((error, stackTrace) {
+      developer.log('error when delete salad form db ',
+          name: 'DBQueryArticle', error: error.toString());
+      return -1;
+    });
+  }
 
   /// [getSaladList] return list as MDatabasePasket  form db
   ///

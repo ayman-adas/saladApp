@@ -34,7 +34,7 @@ class WAssistanceAnswer extends StatelessWidget {
                     ),
                     child: CircleAvatar(
                         backgroundColor: DarkLightTheme.isDark(context)
-                            ? ThemeColor.green
+                            ? ThemeColor.grey
                             : ThemeColor.red,
                         backgroundImage: NetworkImage(url),
                         radius: 100.0),

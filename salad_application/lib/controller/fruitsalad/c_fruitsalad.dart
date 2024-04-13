@@ -23,7 +23,7 @@ class CFruitsalad extends ChangeNotifier {
         ControllerImage controllerImageUser =
             Provider.of<ControllerImage>(context, listen: false);
 
-        // change image user
+        // change image salad
         salad.setImageUrl(await controllerImageUser.uploadImage(
           'fruit salad ',
         ));

@@ -1,30 +1,42 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:country_state_city_pro/country_state_city_pro.dart';
+// import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:fruit_salad/model/m_advision.dart';
+import 'package:fruit_salad/model/salad/m_advision.dart';
 // import 'package:toast/toast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:path/path.dart' as p;
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:bottom_sheet/bottom_sheet.dart';
 // import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
+// import 'package:app_color/app_color.dart';
+// import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+// import 'package:sheet/sheet.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:animated_radio_buttons/animated_radio_buttons.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+// import 'package:cupertino_modal_sheet/cupertino_modal_sheet.dart';
+import 'package:phonenumbers/phonenumbers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruit_salad/firebase_options.dart';
 import 'package:fruit_salad/model/m_about.dart';
-import 'package:fruit_salad/model/m_login.dart';
+import 'package:fruit_salad/model/auth/m_login.dart';
 import 'package:fruit_salad/model/m_svg.dart';
 import 'package:image_cropper/image_cropper.dart';
+// import country_state_city package
 import 'package:image_picker/image_picker.dart';
 // core Flutter primitives
 // core FlutterFire dependency
@@ -34,47 +46,48 @@ import 'dart:developer' as developer;
 // import 'package:material_dialogs/widgets/buttons/icon_button.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:fruit_salad/model/m_languages.dart';
+import 'package:fruit_salad/model/utils/m_languages.dart';
 import 'package:provider/provider.dart';
+import 'package:toast/toast.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:sqflite/sqflite.dart';
 // import 'package:fruit_salad/model/m_salad_picture.dart';
 import 'package:path_provider/path_provider.dart';
+// import 'dart:ui' as ui;
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+// import 'package:country_state_city_picker/country_state_city_picker.dart';
 import 'package:search_page/search_page.dart';
 import 'package:uuid/uuid.dart';
-
+import 'package:flutter_credit_card/flutter_credit_card.dart';
 import '../model/database/m_headers.dart';
 import '../model/m_picturelist.dart';
+import '../model/salad/m_card_color.dart';
 //model
-part '../model/m_page3.dart';
-part '../model/m_diminsion.dart';
-part '../model/m_route_name.dart';
-part '../model/m_icons.dart';
-part '../controller/c_auth.dart';
+part '../model/utils/m_diminsion.dart';
+part '../model/utils/m_route_name.dart';
+part '../model/utils/m_icons.dart';
+part '../controller/auth/c_auth.dart';
 
 //view
 part '../view/v_home.dart';
-part '../view/v_packet.dart';
 part '../view/v_about.dart';
 
 part '../view/v_page1.dart';
 
 part '../view/v_page2.dart';
 
-part '../view/v_page3.dart';
+part '../view/salad/v_salad.dart';
 part '../view/v_assistance.dart';
 
-part '../view/v_quantity.dart';
+part '../view/salad/v_quantity.dart';
 part '../view/v_testnetwork.dart';
 part '../view/v_themechange.dart';
 part '../view/v_language.dart';
 
-part './../view/v_forget_password.dart';
-part './../view/v_login.dart';
-part '../view/v_sregister.dart';
+part '../view/auth/v_forget_password.dart';
+part '../view/auth/v_login.dart';
+part '../view/auth/v_register.dart';
 
 // drawer
 part '../Drawer/v_main_drawer.dart';
@@ -82,9 +95,8 @@ part '../Drawer/c_head_drawer.dart';
 part '../Drawer/c_service_drawer.dart';
 part '../Drawer/c_service_tab.dart';
 part '../Drawer/w_signout.dart';
-
 //widget
-part '../widget/w_packet_element.dart';
+part '../widget/pasket/w_packet_element.dart';
 part '../widget/w_theme_lanfuase_change.dart';
 part '../widget/textField.dart';
 part '../widget/w_bottom_sheet.dart';
@@ -101,14 +113,14 @@ part './../widget/w_signout.dart';
 part './../widget/w_snack_bar.dart';
 part './../widget/w_toast.dart';
 part './../widget/auth/widget_logo.dart';
-part '../widget/w_salad_button.dart';
+part '../widget/fruitsalad/w_salad_button.dart';
 //controll
 part '../controller/c_error_massage.dart';
 // part '../controller/c_packet_list.dart';
 part '../controller/c_saladimages.dart';
 part '../controller/c_image.dart';
-part './../controller/c_security.dart';
-part '../model/m_accoint_user.dart';
+part '../controller/auth/c_security.dart';
+part '../model/auth/m_accoint_user.dart';
 
 //thema
 part '../theme/textstyle.dart';
@@ -123,16 +135,16 @@ part '../theme/themeRestart.dart';
 part './../theme/t_firebaces.dart';
 part './../theme/wrapper.dart';
 //
-part './../view/v_data_insertion.dart';
+part '../view/salad/v_salad_upload.dart';
 part '../widget/widget_image.dart';
 
 part './../widget/fruitsalad/widget_name.dart';
 part './../controller/fruitsalad/c_fruitsalad.dart';
 part './../widget/fruitsalad/widget_sal.dart';
-part './../model/m_fruit_salad.dart';
+part '../model/salad/m_fruit_salad.dart';
 part './../widget/assistance/assistance_name.dart';
 part './../widget/assistance/assistance_desc.dart';
-part './../model/m_assstance.dart';
+part '../model/assistance/m_assstance.dart';
 part '../controller/assistance/c_assistance.dart';
 part '../view/assisitance/v_question_answer.dart';
 part './../widget/assistance/w_assistancce_view.dart';
@@ -147,3 +159,25 @@ part './../controller/notification/c_notification_masage.dart';
 // part './../widget/w_notification.dart';
 
 part './../view/v_search.dart';
+
+part '../model/salad/m_salad_page.dart';
+
+part './../widget/widget_search_field.dart';
+
+part './../widget/pasket/w_btn.dart';
+part './../widget/pasket/w_total_sail.dart';
+part './../view/pasket/v_pasket_body.dart';
+part './../widget/pasket/w_country_list.dart';
+part './../view/pasket/v_cart.dart';
+part './../widget/pasket/w_phone_number.dart';
+part './../widget/pasket/w_name.dart';
+part './../widget/pasket/w_credit_card.dart';
+
+part './../widget/pasket/w_switch.dart';
+
+part './../widget/pasket/w_adress.dart';
+
+part './../widget/pasket/w_customer_name.dart';
+
+part './../controller/pasket/c_pasket.dart';
+part './../model/pasket/m_pasket.dart';

@@ -12,8 +12,11 @@ class CServiceTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      //icon
       leading: Icon(icon),
+      //title
       title: Text(title).tr(),
+      //icon color
       iconColor:
           DarkLightTheme.isDark(context) ? ThemeColor.green : ThemeColor.red,
       titleTextStyle: ThemeTextStyle.lLarge(context)?.copyWith(

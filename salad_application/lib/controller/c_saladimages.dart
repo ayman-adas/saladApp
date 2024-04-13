@@ -1,6 +1,7 @@
 part of '../import/import.dart';
 
 class CSaladImages {
+  //list of salad images
   static List<String> list = [
     MSadalPictureListItem.image1,
     MSadalPictureListItem.image2,

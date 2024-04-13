@@ -89,7 +89,17 @@
       "proplemName":"اسم المشكلة",
       "singinWith":"تسجيل الدخول عن طريق",
       "signupwith":"سجل عن طريق",
-      "search": "بحث .."
+      "search": "بحث ..",
+      "addCart":"اضافة الى العربة",
+      "noItem":"لم يتم تعيين أي عنصر",
+      "countryName":"اسم الدولة",
+      "firstName":"اسم الاول",
+      "lastName":"اسم العائلة",
+      "adress":"العنوان",
+      "visa":"بطاقة ائتمانية",
+      "cash":"نقدا",
+      "customerName":"اسم العميل",
+      "payMethod":"طريقة الشراء"
 
 
 

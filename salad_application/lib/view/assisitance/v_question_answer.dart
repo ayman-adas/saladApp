@@ -39,7 +39,7 @@ class VQuestionAnswer extends StatelessWidget {
                             ))),
                     Divider(
                       color: DarkLightTheme.isDark(context)
-                          ? ThemeColor.green
+                          ? ThemeColor.grey
                           : ThemeColor.red,
                     ),
                     Expanded(
@@ -57,11 +57,11 @@ class VQuestionAnswer extends StatelessWidget {
               );
             } else {
               // no data
-              return const CErrorMassage(massage: MLanguages.nodata);
+              return  CErrorMassage(massage: MLanguages.nodata);
             }
           } else {
             // no active
-            return const CErrorMassage(massage: MLanguages.noconnect);
+            return  CErrorMassage(massage: MLanguages.noconnect);
           }
         });
   }

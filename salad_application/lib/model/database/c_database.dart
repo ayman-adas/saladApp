@@ -6,6 +6,8 @@ class CDatabase extends ChangeNotifier {
   static String? massage;
   static List<MDatabasePasket> pasketList = <MDatabasePasket>[];
   static int sailAll = 0;
+
+  ///[createpasketAndUpdate] create item to pasket or update if exist
   Future<void> createpasketAndUpdate(MDatabasePasket pasket) async {
     if (await MDatabaseQuery.query.getSaladById(pasket) == null) {
       if (await MDatabaseQuery.query.createSalad(pasket) > 0) {
@@ -26,6 +28,7 @@ class CDatabase extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///[deleteItem] delete item from the list
   Future<void> deleteItem(MDatabasePasket pasket) async {
     if (await MDatabaseQuery.query.deleteSaladById(pasket) > 0) {
       massage = MLanguages.quantitydeleteSucssess;
@@ -36,6 +39,7 @@ class CDatabase extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// [selectitems] return all item in the list
   Future<void> selectitems() async {
     pasketList = await MDatabaseQuery.query.getSaladList;
     sailAll = 0;
@@ -45,6 +49,17 @@ class CDatabase extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<int> sail() async {
+    pasketList = await MDatabaseQuery.query.getSaladList;
+    sailAll = 0;
+    for (int i = 0; i < pasketList.length; i++) {
+      sailAll += (pasketList[i].sail ?? 0) * (pasketList[i].counter ?? 0);
+    }
+    notifyListeners();
+    return sailAll;
+  }
+
+  ///[convertToPasket] convert from fruit salad to pasket
   MDatabasePasket convertToPasket(MFruitSalad salad, int counter) {
     return MDatabasePasket(
       id: salad._id,
@@ -56,6 +71,8 @@ class CDatabase extends ChangeNotifier {
       timestamp: DateTime.now().microsecondsSinceEpoch.toString(),
     );
   }
+
+  ///[convertTofruitSalad] convert from fruit pasket to salad
 
   MFruitSalad? convertTofruitSalad(
     MDatabasePasket pasket,

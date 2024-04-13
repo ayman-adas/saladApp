@@ -5,12 +5,15 @@ class CDrawerHead extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //provider
     ControllerAuth auth = Provider.of<ControllerAuth>(context, listen: false);
     return Padding(
+      //padding
       padding: const EdgeInsets.all(MDime.l),
       child: Column(
         children: [
           Container(
+            //image
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(

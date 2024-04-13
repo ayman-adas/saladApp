@@ -2,6 +2,7 @@
 part of './../../import/import.dart';
 
 class MDatabasePasket {
+  //setter and getter for salad item
   String? arabicName;
   String? englishName;
   String? image;

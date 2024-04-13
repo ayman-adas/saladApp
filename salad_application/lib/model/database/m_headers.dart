@@ -1,4 +1,5 @@
 class MDatabaseHeaders {
+  //headers text
   static const String colCounter = 'counter';
   static const String colSail = 'sail';
   static const String colArabicname = 'arabicName';

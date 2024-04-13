@@ -19,6 +19,7 @@ class WidgetFruitsaladSalary extends StatelessWidget {
           FormBuilderValidators.required(),
           FormBuilderValidators.maxLength(2)
         ]),
-        onSaved: fruitsalad.salad.setsalary);
+        onSaved: (fruitsalad.salad.setsalary)
+        );
   }
 }

@@ -86,7 +86,18 @@
       "proplemName":"proplem name",
       "singinWith":"sign in with",
       "signupwith":"sign up with",
-      "search":"search .."
+      "search":"search ..",
+      "addCart":"Add A Cart",
+      "noItem":"No Items Set",
+      "countryName":"Country Name",
+      "firstName":"First Name",
+      "lastName":"Last Name",
+      "adress":"Adress",
+      "visa":"Visa",
+      "cash":"Cash",
+      "customerName":"Customer Name",
+      "payMethod":"Paying Method"
+
       
     
 

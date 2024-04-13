@@ -1,11 +1,15 @@
+// ignore_for_file: must_be_immutable
+
 part of '../import/import.dart';
 
 class CErrorMassage extends StatelessWidget {
-  const CErrorMassage({
+   CErrorMassage({
     super.key,
     required this.massage,
+    this.callback
   });
   final String massage;
+   void Function()? callback;
   @override
   Widget build(BuildContext context) {
     //alert for error masseges
@@ -19,7 +23,7 @@ class CErrorMassage extends StatelessWidget {
                   ? ThemeColor.green
                   : ThemeColor.red,
             )),
-        onPressed: () {},
+        onPressed: callback,
         child: const Text(MLanguages.ok).tr(),
       ),
     ]);

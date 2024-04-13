@@ -28,7 +28,7 @@ class WidgetAuthImageUser extends StatelessWidget {
               shape: BoxShape.circle,
               border: Border.all(
                   color: DarkLightTheme.isDark(context)
-                      ? ThemeColor.green
+                      ? ThemeColor.grey
                       : ThemeColor.red,
                   width: MDime.xs.w),
               image: DecorationImage(

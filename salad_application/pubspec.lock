@@ -17,6 +17,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.6.0"
+  animated_radio_buttons:
+    dependency: "direct main"
+    description:
+      name: animated_radio_buttons
+      sha256: ccf316409e4c105fe597587ec68702fd9d0a6a0bd6b5ca4a9953210920f68856
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
+  animated_toggle_switch:
+    dependency: "direct main"
+    description:
+      name: animated_toggle_switch
+      sha256: "35e3d6c74eef79c415ac3986046c35cb1ea42720afce13ec7f1a014f72dfd71c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.8.2"
   ansicolor:
     dependency: transitive
     description:
@@ -25,6 +41,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
+  app_color:
+    dependency: "direct main"
+    description:
+      name: app_color
+      sha256: e5c8c7482b449466af4b7dabca3dfb19e986c907ef2ca5f7597c2e4c0eb213d6
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.9"
   archive:
     dependency: transitive
     description:
@@ -161,6 +185,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  country_state_city_pro:
+    dependency: "direct main"
+    description:
+      name: country_state_city_pro
+      sha256: "22a53349836f8ddb016e1e0f45b26b61f3546ae5257a818b0935a9222ed4b20b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
   cross_file:
     dependency: transitive
     description:
@@ -193,6 +225,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.6"
+  cupertino_modal_sheet:
+    dependency: "direct main"
+    description:
+      name: cupertino_modal_sheet
+      sha256: "50cc00a18d01f62172bf1584d5efde1fc7a644db50d40865529dbf8f90c26587"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   dbus:
     dependency: transitive
     description:
@@ -209,6 +249,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  dropdown_search:
+    dependency: "direct main"
+    description:
+      name: dropdown_search
+      sha256: "55106e8290acaa97ed15bea1fdad82c3cf0c248dd410e651f5a8ac6870f783ab"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.6"
   easy_localization:
     dependency: "direct main"
     description:
@@ -401,11 +449,27 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  fl_country_code_picker:
+    dependency: "direct main"
+    description:
+      name: fl_country_code_picker
+      sha256: "5908079d019aab76acf065020fbefd6aa8176127277976017126e65ffa2fb035"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.9+1"
   flutter:
     dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_credit_card:
+    dependency: "direct main"
+    description:
+      name: flutter_credit_card
+      sha256: dffaee369b0e64fb81e63e78d6410762f73b67346692bd2ae7bdcc6d911452e3
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.1"
   flutter_facebook_auth:
     dependency: "direct main"
     description:
@@ -805,6 +869,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.1+1"
+  interactive_bottom_sheet:
+    dependency: "direct main"
+    description:
+      name: interactive_bottom_sheet
+      sha256: "683f4a4eff7f24d9006ec3f2aceed8b4646ce9face19af3b525b0e319160879a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   intl:
     dependency: transitive
     description:
@@ -1021,6 +1093,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.2"
+  phonenumbers:
+    dependency: "direct main"
+    description:
+      name: phonenumbers
+      sha256: "6a00ea6ca4636d8fba278a38e5fc6580be9e3cb38f4fafc4e6ef5009be0ffde2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
+  phonenumbers_core:
+    dependency: transitive
+    description:
+      name: phonenumbers_core
+      sha256: "9d4619947b8579b62f456bdb05d25be2e266c7601d1fbe02dc8e6bdc59dfb5d8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   platform:
     dependency: transitive
     description:
@@ -1053,6 +1141,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.1"
+  quiver:
+    dependency: transitive
+    description:
+      name: quiver
+      sha256: b1c1ac5ce6688d77f65f3375a9abb9319b3cb32486bdc7a1e0fdf004d7ba4e47
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.1"
   regexpattern:
     dependency: "direct main"
     description:
@@ -1077,6 +1173,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.7"
+  scrollable_positioned_list:
+    dependency: transitive
+    description:
+      name: scrollable_positioned_list
+      sha256: "1b54d5f1329a1e263269abc9e2543d90806131aa14fe7c6062a8054d57249287"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.8"
   search_page:
     dependency: "direct main"
     description:
@@ -1141,6 +1245,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  sheet:
+    dependency: "direct main"
+    description:
+      name: sheet
+      sha256: "0b354e79be302538dd3684f984100e818c56215539e3417aad23534a8bbf4119"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4+1"
   sky_engine:
     dependency: transitive
     description: flutter

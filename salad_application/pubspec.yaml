@@ -73,6 +73,18 @@ dependencies:
   flutter_facebook_auth: ^6.1.1
   google_sign_in: ^6.2.1
   firebase_messaging: ^14.7.17
+  flutter_credit_card: ^4.0.1
+  app_color: ^0.0.9
+  animated_toggle_switch: ^0.8.2
+  phonenumbers: ^1.1.1
+  fl_country_code_picker: ^0.1.9+1
+  sheet: ^0.0.4+1
+  cupertino_modal_sheet: ^1.1.0
+  interactive_bottom_sheet: ^1.0.0
+  animated_radio_buttons: ^1.0.0
+  dropdown_search: ^5.0.3
+  country_state_city_pro: ^0.0.6
+
 flutter_native_splash:
  
   web: false

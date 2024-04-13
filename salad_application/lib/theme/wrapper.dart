@@ -14,7 +14,7 @@ class Wrapper extends StatelessWidget {
             return const WidgetProgress();
           } else if (snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
-              return const VPage3();
+              return const VTestNetwok();
             } else {
               return const VHome();
             }

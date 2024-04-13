@@ -1,3 +1,4 @@
+///[MSvge] images in svg
 class MSvge {
   static const String shams = "assets/shams.svg";
   static const String helal = "assets/helal.svg";
