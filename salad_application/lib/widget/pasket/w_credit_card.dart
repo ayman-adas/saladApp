@@ -28,212 +28,225 @@ class WidgetCreditCardState extends State<WidgetCreditCard> {
   Widget build(BuildContext context) {
     bool isLightTheme = !DarkLightTheme.isDark(context);
 
-    return Scaffold(body: Builder(
-      builder: (BuildContext context) {
-        return Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: ExactAssetImage(
-                isLightTheme ? 'assets/bg-light.png' : 'assets/bg-dark.png',
-              ),
-              fit: BoxFit.fill,
-            ),
-          ),
-          child: SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                IconButton(
-                  onPressed: () => setState(() {
-                    isLightTheme = !isLightTheme;
-                  }),
-                  icon: Icon(
-                    isLightTheme ? Icons.light_mode : Icons.dark_mode,
-                  ),
+    return PopScope(
+      canPop: false,
+      child: Scaffold(body: Builder(
+        builder: (BuildContext context) {
+          return Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: ExactAssetImage(
+                  isLightTheme ? 'assets/bg-light.png' : 'assets/bg-dark.png',
                 ),
-                CreditCardWidget(
-                  enableFloatingCard: useFloatingAnimation,
-                  glassmorphismConfig: _getGlassmorphismConfig(),
-                  cardNumber: cardNumber,
-                  expiryDate: expiryDate,
-                  cardHolderName: cardHolderName,
-                  cvvCode: cvvCode,
-                  bankName: 'Axis Bank',
-                  frontCardBorder:
-                      useGlassMorphism ? null : Border.all(color: Colors.grey),
-                  backCardBorder:
-                      useGlassMorphism ? null : Border.all(color: Colors.grey),
-                  showBackView: isCvvFocused,
-                  obscureCardNumber: true,
-                  obscureCardCvv: true,
-                  isHolderNameVisible: true,
-                  cardBgColor: isLightTheme
-                      ? AppColors.cardBgLightColor
-                      : AppColors.cardBgColor,
-                  backgroundImage:
-                      useBackgroundImage ? 'assets/card_bg.png' : null,
-                  isSwipeGestureEnabled: true,
-                  onCreditCardWidgetChange:
-                      (CreditCardBrand creditCardBrand) {},
-                  customCardTypeIcons: <CustomCardTypeIcon>[
-                    CustomCardTypeIcon(
-                      cardType: CardType.mastercard,
-                      cardImage: Image.asset(
-                        'assets/mastercard.png',
-                        height: 48,
-                        width: 48,
+                fit: BoxFit.fill,
+              ),
+            ),
+            child: SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  IconButton(
+                    onPressed: () => setState(() {
+                      isLightTheme = !isLightTheme;
+                    }),
+                    icon: Icon(
+                      isLightTheme ? Icons.light_mode : Icons.dark_mode,
+                    ),
+                  ),
+                  CreditCardWidget(
+                    enableFloatingCard: useFloatingAnimation,
+                    glassmorphismConfig: _getGlassmorphismConfig(),
+                    cardNumber: cardNumber,
+                    expiryDate: expiryDate,
+                    cardHolderName: cardHolderName,
+                    cvvCode: cvvCode,
+                    bankName: 'Axis Bank',
+                    frontCardBorder: useGlassMorphism
+                        ? null
+                        : Border.all(color: Colors.grey),
+                    backCardBorder: useGlassMorphism
+                        ? null
+                        : Border.all(color: Colors.grey),
+                    showBackView: isCvvFocused,
+                    obscureCardNumber: true,
+                    obscureCardCvv: true,
+                    isHolderNameVisible: true,
+                    cardBgColor: isLightTheme
+                        ? AppColors.cardBgLightColor
+                        : AppColors.cardBgColor,
+                    backgroundImage:
+                        useBackgroundImage ? 'assets/card_bg.png' : null,
+                    isSwipeGestureEnabled: true,
+                    onCreditCardWidgetChange:
+                        (CreditCardBrand creditCardBrand) {},
+                    customCardTypeIcons: <CustomCardTypeIcon>[
+                      CustomCardTypeIcon(
+                        cardType: CardType.mastercard,
+                        cardImage: Image.asset(
+                          'assets/mastercard.png',
+                          height: 48,
+                          width: 48,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: <Widget>[
+                          CreditCardForm(
+                            formKey: formKey,
+                            obscureCvv: true,
+                            obscureNumber: true,
+                            cardNumber: cardNumber,
+                            cvvCode: cvvCode,
+                            isHolderNameVisible: true,
+                            isCardNumberVisible: true,
+                            isExpiryDateVisible: true,
+                            cardHolderName: cardHolderName,
+                            expiryDate: expiryDate,
+                            inputConfiguration: const InputConfiguration(
+                              cardNumberDecoration: InputDecoration(
+                                labelText: 'Number',
+                                hintText: 'XXXX XXXX XXXX XXXX',
+                              ),
+                              expiryDateDecoration: InputDecoration(
+                                labelText: 'Expired Date',
+                                hintText: 'XX/XX',
+                              ),
+                              cvvCodeDecoration: InputDecoration(
+                                labelText: 'CVV',
+                                hintText: 'XXX',
+                              ),
+                              cardHolderDecoration: InputDecoration(
+                                labelText: 'Card Holder',
+                              ),
+                            ),
+                            onCreditCardModelChange: onCreditCardModelChange,
+                          ),
+                          const SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                const Text('Glassmorphism'),
+                                const Spacer(),
+                                Switch(
+                                  value: useGlassMorphism,
+                                  inactiveTrackColor: Colors.grey,
+                                  activeColor: Colors.white,
+                                  activeTrackColor: AppColors.colorE5D1B2,
+                                  onChanged: (bool value) => setState(() {
+                                    useGlassMorphism = value;
+                                  }),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                const Text('Card Image'),
+                                const Spacer(),
+                                Switch(
+                                  value: useBackgroundImage,
+                                  inactiveTrackColor: Colors.grey,
+                                  activeColor: Colors.white,
+                                  activeTrackColor: AppColors.colorE5D1B2,
+                                  onChanged: (bool value) => setState(() {
+                                    useBackgroundImage = value;
+                                  }),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                const Text('Floating Card'),
+                                const Spacer(),
+                                Switch(
+                                  value: useFloatingAnimation,
+                                  inactiveTrackColor: Colors.grey,
+                                  activeColor: Colors.white,
+                                  activeTrackColor: AppColors.colorE5D1B2,
+                                  onChanged: (bool value) => setState(() {
+                                    useFloatingAnimation = value;
+                                  }),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          GestureDetector(
+                            onTap: _onValidate,
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 8,
+                              ),
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: <Color>[
+                                    AppColors.colorB58D67,
+                                    AppColors.colorB58D67,
+                                    AppColors.colorE5D1B2,
+                                    AppColors.colorF9EED2,
+                                    AppColors.colorEFEFED,
+                                    AppColors.colorF9EED2,
+                                    AppColors.colorB58D67,
+                                  ],
+                                  begin: Alignment(-1, -4),
+                                  end: Alignment(1, 4),
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(8),
+                                ),
+                              ),
+                              padding: const EdgeInsets.symmetric(vertical: 15),
+                              alignment: Alignment.center,
+                              child: const Text(
+                                'Validate',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'halter',
+                                  fontSize: 14,
+                                  package: 'flutter_credit_card',
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: <Widget>[
-                        CreditCardForm(
-                          formKey: formKey,
-                          obscureCvv: true,
-                          obscureNumber: true,
-                          cardNumber: cardNumber,
-                          cvvCode: cvvCode,
-                          isHolderNameVisible: true,
-                          isCardNumberVisible: true,
-                          isExpiryDateVisible: true,
-                          cardHolderName: cardHolderName,
-                          expiryDate: expiryDate,
-                          inputConfiguration: const InputConfiguration(
-                            cardNumberDecoration: InputDecoration(
-                              labelText: 'Number',
-                              hintText: 'XXXX XXXX XXXX XXXX',
-                            ),
-                            expiryDateDecoration: InputDecoration(
-                              labelText: 'Expired Date',
-                              hintText: 'XX/XX',
-                            ),
-                            cvvCodeDecoration: InputDecoration(
-                              labelText: 'CVV',
-                              hintText: 'XXX',
-                            ),
-                            cardHolderDecoration: InputDecoration(
-                              labelText: 'Card Holder',
-                            ),
-                          ),
-                          onCreditCardModelChange: onCreditCardModelChange,
-                        ),
-                        const SizedBox(height: 20),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              const Text('Glassmorphism'),
-                              const Spacer(),
-                              Switch(
-                                value: useGlassMorphism,
-                                inactiveTrackColor: Colors.grey,
-                                activeColor: Colors.white,
-                                activeTrackColor: AppColors.colorE5D1B2,
-                                onChanged: (bool value) => setState(() {
-                                  useGlassMorphism = value;
-                                }),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              const Text('Card Image'),
-                              const Spacer(),
-                              Switch(
-                                value: useBackgroundImage,
-                                inactiveTrackColor: Colors.grey,
-                                activeColor: Colors.white,
-                                activeTrackColor: AppColors.colorE5D1B2,
-                                onChanged: (bool value) => setState(() {
-                                  useBackgroundImage = value;
-                                }),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              const Text('Floating Card'),
-                              const Spacer(),
-                              Switch(
-                                value: useFloatingAnimation,
-                                inactiveTrackColor: Colors.grey,
-                                activeColor: Colors.white,
-                                activeTrackColor: AppColors.colorE5D1B2,
-                                onChanged: (bool value) => setState(() {
-                                  useFloatingAnimation = value;
-                                }),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        GestureDetector(
-                          onTap: _onValidate,
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 8,
-                            ),
-                            decoration: const BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: <Color>[
-                                  AppColors.colorB58D67,
-                                  AppColors.colorB58D67,
-                                  AppColors.colorE5D1B2,
-                                  AppColors.colorF9EED2,
-                                  AppColors.colorEFEFED,
-                                  AppColors.colorF9EED2,
-                                  AppColors.colorB58D67,
-                                ],
-                                begin: Alignment(-1, -4),
-                                end: Alignment(1, 4),
-                              ),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(8),
-                              ),
-                            ),
-                            padding: const EdgeInsets.symmetric(vertical: 15),
-                            alignment: Alignment.center,
-                            child: const Text(
-                              'Validate',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: 'halter',
-                                fontSize: 14,
-                                package: 'flutter_credit_card',
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
-      },
-    ));
+          );
+        },
+      )),
+    );
   }
 
   void _onValidate() {
     if (formKey.currentState?.validate() ?? false) {
-      print('valid!');
+      // print('valid!');
+      if (context.mounted) {
+        WidgetToast.buildToast(
+          msg: MLanguages.succsesful.tr(),
+          context: context,
+        );
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const VSalad()));
+      }
     } else {
-      print('invalid!');
+      // print('invalid!');
     }
   }
 

@@ -23,10 +23,8 @@ class VQuestionAnswer extends StatelessWidget {
             // check has data
             if (snapshot.hasData) {
               return PopScope(
-                canPop: false,
                 child: Scaffold(
                   appBar: AppBar(),
-                  drawer: const VMainDrawer(),
                   body: Column(children: [
                     Container(
                         color: ThemeColor.gold,
@@ -49,7 +47,8 @@ class VQuestionAnswer extends StatelessWidget {
                         return WAssistanceAnswer(
                             url: snapshot.data![index]._image ?? "1",
                             desc: snapshot.data![index]._desc ?? "2",
-                            name: snapshot.data![index]._name ?? "3");
+                            email: snapshot.data![index]._email ?? "3",
+                            name: snapshot.data![index]._name ?? "4");
                       },
                     )),
                   ]),
@@ -57,12 +56,13 @@ class VQuestionAnswer extends StatelessWidget {
               );
             } else {
               // no data
-              return  CErrorMassage(massage: MLanguages.nodata);
+              return CErrorMassage(massage: MLanguages.nodata);
             }
           } else {
             // no active
-            return  CErrorMassage(massage: MLanguages.noconnect);
+            return CErrorMassage(massage: MLanguages.noconnect);
           }
         });
   }
 }
+

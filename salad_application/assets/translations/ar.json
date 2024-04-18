@@ -99,7 +99,10 @@
       "visa":"بطاقة ائتمانية",
       "cash":"نقدا",
       "customerName":"اسم العميل",
-      "payMethod":"طريقة الشراء"
+      "payMethod":"طريقة الشراء",
+      "succsesful":"تمت العملية بنجاح",
+      "timestamp":"التاريخ",
+      "request":"طلبيات الشراء"
 
 
 

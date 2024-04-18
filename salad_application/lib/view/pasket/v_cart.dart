@@ -10,12 +10,13 @@ class ViewCart extends StatefulWidget {
 class _ViewCartState extends State<ViewCart> {
   @override
   Widget build(BuildContext context) {
+    CPasket pasket = Provider.of<CPasket>(context);
+
     TextEditingController country = TextEditingController();
     TextEditingController city = TextEditingController();
     TextEditingController state = TextEditingController();
     PhoneNumberEditingController phone =
         PhoneNumberEditingController.fromCountryCode('AZ');
-    int myVar = 1;
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     Widget buttom(
@@ -37,10 +38,11 @@ class _ViewCartState extends State<ViewCart> {
                       style: ThemeTextStyle.tLarge(context))
                   .tr(),
               onPressed: () async {
-                CPasket pasket = Provider.of<CPasket>(context, listen: false);
-
+                int? myvar;
                 if (formKey.currentState?.validate() ?? false) {
                   // save data
+                  ControllerAuth auth =
+                      Provider.of<ControllerAuth>(context, listen: false);
                   formKey.currentState?.save();
                   if (country.value.text != "" &&
                       state.value.text != "" &&
@@ -55,8 +57,10 @@ class _ViewCartState extends State<ViewCart> {
                     pasket.pasket.setPhone(phone.value!.formattedNumber);
                     pasket.pasket.setTime();
                     pasket.pasket.setSail();
-                    // pasket.pasket.setList(CDatabase.pasketList);
-                    if (myVar == 0) {
+                    pasket.pasket.setList(CDatabase.pasketList);
+                    pasket.pasket.setEmail(auth.userEmail);
+                    myvar = pasket.pasket.myVar;
+                    if (pasket.pasket.myVar == 0) {
                       pasket.pasket.setPay(MLanguages.cash);
                     } else {
                       pasket.pasket.setPay(MLanguages.visa);
@@ -70,8 +74,14 @@ class _ViewCartState extends State<ViewCart> {
                       }
                     } else {
                       MDatabaseQuery.query.deleteAllSalad();
-                      if (myVar == 0) {
+                      if (myvar == 0) {
                         if (context.mounted) {
+                          if (context.mounted) {
+                            WidgetToast.buildToast(
+                              msg: MLanguages.succsesful.tr(),
+                              context: context,
+                            );
+                          }
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -130,13 +140,7 @@ class _ViewCartState extends State<ViewCart> {
                     style: ThemeTextStyle.bLarge(context)
                         ?.copyWith(fontWeight: FontWeight.bold)),
                 MDime.md.verticalSpace,
-                WidgetSwitch(
-                  onChanged: (value) {
-                    setState(() {
-                      myVar = value;
-                    });
-                  },
-                ),
+                const WidgetSwitch(),
                 MDime.md.verticalSpace,
                 buttom(context)
               ],

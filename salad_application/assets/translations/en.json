@@ -96,8 +96,10 @@
       "visa":"Visa",
       "cash":"Cash",
       "customerName":"Customer Name",
-      "payMethod":"Paying Method"
-
+      "payMethod":"Paying Method",
+      "succsesful":" Opearion done succsesfuly",
+      "timestamp":"Date",
+      "request":"salad Request"
       
     
 

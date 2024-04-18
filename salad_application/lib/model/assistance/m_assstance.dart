@@ -7,10 +7,13 @@ class MAssstance {
   String? _name;
   String? _desc;
   String? _id;
-
+  String? _email;
   get getId => _id;
 
   void setId(String? id) => _id = id;
+  get getEmail => _email;
+
+  void setEmail(String? email) => _email = email;
   MAssstance();
   get getImage => _image;
 
@@ -29,7 +32,8 @@ class MAssstance {
       MLanguages.proplemName: _name,
       MLanguages.image: _image,
       MLanguages.id: _id,
-      MLanguages.desc: _desc
+      MLanguages.desc: _desc,
+      MLanguages.email: _email
     };
   }
 
@@ -39,6 +43,7 @@ class MAssstance {
     _image = map[MLanguages.image];
     _name = map[MLanguages.proplemName];
     _desc = map[MLanguages.desc];
+    _email = map[MLanguages.email];
   }
 
   @override

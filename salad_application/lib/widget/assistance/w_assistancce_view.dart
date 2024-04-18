@@ -3,11 +3,12 @@ part of './../../import/import.dart';
 // ignore: must_be_immutable
 class WAssistanceAnswer extends StatelessWidget {
   const WAssistanceAnswer(
-      {super.key, required this.url, required this.desc, required this.name});
+      {super.key, required this.url, required this.desc, required this.name,required this.email});
 
   final String url;
   final String name;
   final String desc;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +44,11 @@ class WAssistanceAnswer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 30),
                     child: Text(name, style: ThemeTextStyle.tMedium(context)),
+                  ),
+                  MDime.l.verticalSpace,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30),
+                    child: Text(email, style: ThemeTextStyle.tMedium(context)),
                   ),
                 ]),
               ))),

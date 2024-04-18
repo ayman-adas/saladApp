@@ -114,4 +114,7 @@ class MLanguages {
   static const String country = "country";
   static const String state = "state";
   static const String city = "city";
+  static const String succsesful = "succsesful";
+  static const String timestamp = "timestamp";
+  static const String request = "request";
 }

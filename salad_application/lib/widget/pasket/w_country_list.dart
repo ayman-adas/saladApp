@@ -7,10 +7,10 @@ class WidgetCountryList extends StatefulWidget {
       required this.city,
       required this.state});
 
-  @override
   final TextEditingController country;
   final TextEditingController state;
   final TextEditingController city;
+  @override
   State<WidgetCountryList> createState() => _WidgetCountryListState();
 }
 

@@ -3,9 +3,10 @@
 part of './../../import/import.dart';
 
 class WidgetSwitch extends StatefulWidget {
-  WidgetSwitch({super.key, this.myVar = 1, required this.onChanged});
-  int? myVar;
-  final Function(int) onChanged;
+  const WidgetSwitch({
+    super.key,
+  });
+
   @override
   State<WidgetSwitch> createState() => _WidgetSwitchState();
 }
@@ -13,19 +14,26 @@ class WidgetSwitch extends StatefulWidget {
 class _WidgetSwitchState extends State<WidgetSwitch> {
   @override
   Widget build(BuildContext context) {
+    CPasket pasket = Provider.of<CPasket>(context, listen: true);
+
     return AnimatedRadioButtons(
-        backgroundColor: Colors.blueAccent.shade100,
-        value: widget.myVar ?? 0,
-        layoutAxis: Axis.horizontal,
-        buttonRadius: 20.0.w,
-        items: [
-          AnimatedRadioButtonItem(
-            label: MLanguages.cash.tr(),
-          ),
-          AnimatedRadioButtonItem(
-            label: MLanguages.visa.tr(),
-          )
-        ],
-        onChanged: widget.onChanged);
+      backgroundColor: Colors.blueAccent.shade100,
+      value: pasket.pasket.myVar ?? 0,
+      layoutAxis: Axis.horizontal,
+      buttonRadius: 20.0.w,
+      items: [
+        AnimatedRadioButtonItem(
+          label: MLanguages.cash.tr(),
+        ),
+        AnimatedRadioButtonItem(
+          label: MLanguages.visa.tr(),
+        )
+      ],
+      onChanged: (value) {
+        setState(() {
+          pasket.pasket.myVar = value;
+        });
+      },
+    );
   }
 }

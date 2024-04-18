@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers, unused_local_variable
+
 part of './../../import/import.dart';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
@@ -14,12 +16,18 @@ class MPasket {
   String? _state;
   String? _adress;
   String? _sailAll;
-  List<MDatabasePasket>? _salad;
+
+  List<MDatabasePasket> _salad = [];
   String? timestamp;
+  String? _email;
+  int? myVar = 1;
 
   get getId => _id;
 
   void setId(String? id) => _id = id;
+  get getEmail => _email;
+
+  void setEmail(String? email) => _email = email;
   MPasket();
   get getPhone => _phone;
 
@@ -54,11 +62,19 @@ class MPasket {
   void setAdress(String? adress) => _adress = adress;
   get getList => _salad;
 
-  void setList(List<MDatabasePasket>? list) => _salad = list;
+  void setList(List<MDatabasePasket> list) => _salad = list;
   get getTime => timestamp;
 
-  void setTime() =>
-      timestamp = DateTime.now().microsecondsSinceEpoch.toString();
+  void setTime() => timestamp = DateTime.now().toString();
+  List<Map> convertCustompasketsToMap() {
+    List<Map> paskets = [];
+    for (var pasket in _salad) {
+      Map step = pasket.toMap();
+      paskets.addAll([step]);
+    }
+    return paskets;
+  }
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       MLanguages.firstName: _firstname,
@@ -66,12 +82,13 @@ class MPasket {
       MLanguages.totalSails: _sailAll,
       MLanguages.payMethod: _payment,
       MLanguages.id: _id,
+      MLanguages.email: _email,
       MLanguages.adress: _adress,
       MLanguages.phone: _phone,
       MLanguages.country: _country,
       MLanguages.city: _city,
       MLanguages.state: _state,
-      MLanguages.saladcombo: _salad,
+      MLanguages.saladcombo: convertCustompasketsToMap(),
       MDatabaseHeaders.colTimeStamp: timestamp,
     };
   }
@@ -79,6 +96,8 @@ class MPasket {
   // read data format map  save on attribute
   MPasket.fromMap(Map<String, dynamic> map) {
     _id = map[MLanguages.id];
+    _email = map[MLanguages.email];
+
     _phone = map[MLanguages.phone];
     _firstname = map[MLanguages.firstName];
     _lastname = map[MLanguages.lastName];
@@ -88,7 +107,13 @@ class MPasket {
     _city = map[MLanguages.city];
     _payment = map[MLanguages.payMethod];
     _sailAll = map[MLanguages.totalSails];
-    _salad = map[MLanguages.saladcombo];
+    final reviewsData = map[MLanguages.saladcombo] as List<dynamic>?;
+
+    var tagObjsmap = map[MLanguages.saladcombo] as List;
+    _salad = tagObjsmap
+        .map((tagJson) => MDatabasePasket.formMap(map: tagJson))
+        .toList();
+
     timestamp = map[MDatabaseHeaders.colTimeStamp];
   }
 

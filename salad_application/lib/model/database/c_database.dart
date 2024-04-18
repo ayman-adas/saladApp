@@ -62,14 +62,13 @@ class CDatabase extends ChangeNotifier {
   ///[convertToPasket] convert from fruit salad to pasket
   MDatabasePasket convertToPasket(MFruitSalad salad, int counter) {
     return MDatabasePasket(
-      id: salad._id,
-      englishName: salad._englishName,
-      arabicName: salad._arabicName,
-      image: salad._image,
-      sail: salad._salary,
-      counter: counter,
-      timestamp: DateTime.now().microsecondsSinceEpoch.toString(),
-    );
+        id: salad._id,
+        englishName: salad._englishName,
+        arabicName: salad._arabicName,
+        image: salad._image,
+        sail: salad._salary,
+        counter: counter,
+        timestamp: DateTime.now().toString());
   }
 
   ///[convertTofruitSalad] convert from fruit pasket to salad

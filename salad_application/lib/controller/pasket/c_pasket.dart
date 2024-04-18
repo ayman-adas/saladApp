@@ -52,12 +52,12 @@ class CPasket extends ChangeNotifier {
     pasket = MPasket();
 
     // call provider image article
-  
 
     MDatabaseQuery.query.deleteAllSalad();
   }
 
-  Stream<List<MPasket>> get getAllAnswer {
+  Stream<List<MPasket>> get getAllRequest {
+    developer.log(_fruitsFromSnapshots.toString());
     return collectionReference.snapshots().map(_fruitsFromSnapshots);
   }
 
@@ -65,11 +65,12 @@ class CPasket extends ChangeNotifier {
   List<MPasket> _fruitsFromSnapshots(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      developer.log(data.toString());
       return MPasket.fromMap(data);
     }).toList();
   }
 
   Future<List<MPasket>> categoryList() async {
-    return await getAllAnswer.first;
+    return await getAllRequest.first;
   }
 }

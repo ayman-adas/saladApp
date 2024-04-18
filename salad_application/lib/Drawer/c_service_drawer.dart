@@ -78,6 +78,21 @@ class CDraerrServer extends StatelessWidget {
                 },
               ),
             ),
+            //bottom for salad request
+            Visibility(
+              visible: isadmin,
+              child: CServiceTabs(
+                icon: Icons.data_exploration,
+                title: MLanguages.request,
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ViewRequestList(),
+                      ));
+                },
+              ),
+            ),
 
             //bottom for about us
             CServiceTabs(
