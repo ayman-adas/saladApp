@@ -34,7 +34,7 @@ class ViewRequestList extends StatelessWidget {
                             snapshot.data![index].timestamp ?? "12",
                           );
                           //if the time is consumme large than 24 it will not delay
-                          if (hoursBetween(date, DateTime.now()) > 1) {
+                          if (hoursBetween(date, DateTime.now()) > 24) {
                             developer.log(
                                 snapshot.data![index]._salad.length.toString());
                             return WidgetRequest(
